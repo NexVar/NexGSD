@@ -349,7 +349,7 @@ MertGSD works with any LLM:
 
 | Model | Status |
 |-------|--------|
-| GPT-4 / GPT-4o (OpenAI) | Compatible |
+| GPT / Codex (OpenAI) | Compatible |
 | Gemini (Google) | Compatible |
 | Llama / Mistral / DeepSeek | Compatible |
 
