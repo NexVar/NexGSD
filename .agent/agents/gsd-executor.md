@@ -19,6 +19,7 @@ Your job: Execute the plan completely, commit each task, create SUMMARY.md, upda
 Load execution context:
 
 ```bash
+INIT=$(cat .planning/STATE.md 2>/dev/null)
 ```
 
 Extract from init JSON: `executor_model`, `commit_docs`, `phase_dir`, `plans`, `incomplete_plans`.
@@ -171,6 +172,7 @@ Track auto-fix attempts per task. After 3 auto-fix attempts on a single task:
 Check if auto mode is active at executor start:
 
 ```bash
+AUTO_CFG=$(cat .planning/config.json 2>/dev/null | grep -o '"auto_advance"[[:space:]]*:[[:space:]]*[a-z]*' | grep -o '[a-z]*$' || echo "false")
 ```
 
 Store the result for checkpoint handling below.
@@ -183,6 +185,7 @@ Store the result for checkpoint handling below.
 Before any `checkpoint:human-verify`, ensure verification environment is ready. If plan lacks server startup before checkpoint, ADD ONE (deviation Rule 3).
 
 For full automation-first patterns, server lifecycle, CLI handling:
+**See @.agent/references/checkpoints.md**
 
 
 ---
@@ -304,6 +307,7 @@ After all tasks complete, create `{phase}-{plan}-SUMMARY.md` at `.planning/phase
 
 **ALWAYS use the Write tool to create files** — never use `Bash(cat << 'EOF')` or heredoc commands for file creation.
 
+**Use template:** @.agent/templates/summary.md
 
 **Frontmatter:** phase, plan, subsystem, tags, dependency graph (requires/provides/affects), tech-stack (added/patterns), key-files (created/modified), decisions, metrics (duration, completed date).
 
@@ -352,31 +356,35 @@ Do NOT skip. Do NOT proceed to state updates if self-check fails.
 </self_check>
 
 <state_updates>
-After SUMMARY.md, update STATE.md using gsd-tools:
+After SUMMARY.md, update STATE.md directly:
 
 ```bash
-# Advance plan counter (handles edge cases automatically)
-
-# Recalculate progress bar from disk state
-
-# Record execution metrics
-  --phase "${PHASE}" --plan "${PLAN}" --duration "${DURATION}" \
-  --tasks "${TASK_COUNT}" --files "${FILE_COUNT}"
-
-# Add decisions (extract from SUMMARY.md key-decisions)
-for decision in "${DECISIONS[@]}"; do
-    --phase "${PHASE}" --summary "${decision}"
-done
-
-# Update session info
-  --stopped-at "Completed ${PHASE}-${PLAN}-PLAN.md"
+# Read and update STATE.md directly:
+# 1. Advance plan counter — edit "Current Plan:" line to increment plan number
+# 2. Recalculate progress — count SUMMARY.md files vs PLAN.md files in phase dir
+PLAN_COUNT=$(ls "$PHASE_DIR"/*-PLAN.md 2>/dev/null | wc -l)
+SUMMARY_COUNT=$(ls "$PHASE_DIR"/*-SUMMARY.md 2>/dev/null | wc -l)
+# 3. Update STATE.md using Edit tool:
+#    - Update "Current Plan:" to next plan number
+#    - Update progress bar based on $SUMMARY_COUNT / $PLAN_COUNT
+#    - Append metrics to "## Performance Metrics" table
+#    - Append decisions to "## Decisions" section
+#    - Update "Last session:" timestamp and "Stopped At:" field
 ```
 
 ```bash
-# Update ROADMAP.md progress for this phase (plan counts, status)
+# Update ROADMAP.md progress for this phase
+# Find the phase entry and update plan completion count:
+grep -n "Phase ${PHASE_NUMBER}" .planning/ROADMAP.md
+# Edit the progress table row to reflect $SUMMARY_COUNT / $PLAN_COUNT
 
-# Mark completed requirements from PLAN.md frontmatter
-# Extract the `requirements` array from the plan's frontmatter, then mark each complete
+# Mark completed requirements in REQUIREMENTS.md
+# Extract requirement IDs from PLAN.md frontmatter, then check off in REQUIREMENTS.md:
+REQ_IDS=$(grep -A5 "^requirements:" "$PLAN_PATH" | grep -oE '[A-Z]+-[0-9]+')
+for REQ in $REQ_IDS; do
+  # Use Edit tool to change "- [ ] **$REQ**" to "- [x] **$REQ**" in REQUIREMENTS.md
+  echo "Marking $REQ complete"
+done
 ```
 
 **Requirement IDs:** Extract from the PLAN.md frontmatter `requirements:` field (e.g., `requirements: [AUTH-01, AUTH-02]`). Pass all IDs to `requirements mark-complete`. If the plan has no requirements field, skip this step.
@@ -394,11 +402,15 @@ done
 
 **For blockers found during execution:**
 ```bash
+# Append blocker to STATE.md "## Blockers" section using Edit tool:
+# - "Blocker description"
 ```
 </state_updates>
 
 <final_commit>
 ```bash
+git add .planning/phases/XX-name/{phase}-{plan}-SUMMARY.md .planning/STATE.md .planning/ROADMAP.md .planning/REQUIREMENTS.md
+git commit -m "docs({phase}-{plan}): complete [plan-name] plan"
 ```
 
 Separate from per-task commits — captures execution results only.

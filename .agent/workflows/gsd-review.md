@@ -127,27 +127,9 @@ Record each finding with:
 
 ### 4. Security Scan
 
-Review code for security issues:
+Read and follow the agent instructions in `.agent/agents/gsd-security-auditor.md` scoped to the changed files.
 
-| Category | What to Check |
-|----------|--------------|
-| **Injection** | SQL injection, XSS, command injection |
-| **Auth** | Missing auth checks, token exposure, session handling |
-| **Data exposure** | Sensitive data in logs, responses, client bundles |
-| **Secrets** | Hardcoded API keys, passwords, tokens |
-| **Dependencies** | Known vulnerable packages |
-| **CORS** | Overly permissive CORS configuration |
-| **Input validation** | Missing or incomplete validation |
-
-```bash
-# Check for potential secrets in changed files
-git diff [range] | grep -iE "(api_key|secret|password|token|private_key)\s*[:=]"
-```
-
-```bash
-# Check for known vulnerable dependencies (if available)
-npm audit --json 2>/dev/null || echo "npm audit not available"
-```
+The security auditor agent handles: injection attacks, auth checks, data exposure, hardcoded secrets, dependency vulnerabilities, CORS, and input validation.
 
 > **HALLUCINATION GATE -- Security findings:**
 > - Can you point to the EXACT line with the vulnerability?
@@ -156,28 +138,17 @@ npm audit --json 2>/dev/null || echo "npm audit not available"
 
 ### 5. Performance Check
 
-Review code for performance issues:
+Read and follow the agent instructions in `.agent/agents/gsd-performance-tester.md` scoped to the changed files.
 
-| Category | What to Check |
-|----------|--------------|
-| **N+1 queries** | Database queries in loops |
-| **Bundle size** | Large imports that could be tree-shaken |
-| **Re-renders** | Missing memoization in React components |
-| **Memory leaks** | Event listeners not cleaned up, intervals not cleared |
-| **Async** | Missing error handling on promises, sequential awaits that could be parallel |
-| **Images** | Unoptimized images, missing lazy loading |
+The performance tester agent handles: N+1 queries, bundle size, React re-renders/memoization, memory leaks, async patterns, and image optimization.
 
 ### 6. Brand Review
 
 If the project has brand guidelines (check `.planning/` for brand-related docs):
 
-| Category | What to Check |
-|----------|--------------|
-| **Colors** | Using design tokens, not hardcoded hex values |
-| **Typography** | Consistent font usage |
-| **Spacing** | Using spacing system, not arbitrary values |
-| **Components** | Using design system components where available |
-| **Copy** | Tone of voice, terminology consistency |
+Read and follow the agent instructions in `.agent/agents/gsd-brand-reviewer.md` scoped to the changed files.
+
+The brand reviewer agent handles: design token usage, color palette, typography, spacing system, component consistency, and copy tone/voice.
 
 **If no brand guidelines exist:** Skip this step and note "No brand guidelines found."
 

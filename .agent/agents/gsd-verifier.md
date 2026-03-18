@@ -53,6 +53,7 @@ Set `is_re_verification = false`, proceed with Step 1.
 ```bash
 ls "$PHASE_DIR"/*-PLAN.md 2>/dev/null
 ls "$PHASE_DIR"/*-SUMMARY.md 2>/dev/null
+grep -A20 "### Phase $PHASE_NUM" .planning/ROADMAP.md
 grep -E "^| $PHASE_NUM" .planning/REQUIREMENTS.md 2>/dev/null
 ```
 
@@ -89,6 +90,7 @@ must_haves:
 If no must_haves in frontmatter, check for Success Criteria:
 
 ```bash
+PHASE_DATA=$(grep -A30 "### Phase $PHASE_NUM" .planning/ROADMAP.md)
 ```
 
 Parse the `success_criteria` array from the JSON output. If non-empty:
@@ -128,9 +130,14 @@ For each truth:
 
 ## Step 4: Verify Artifacts (Three Levels)
 
-Use gsd-tools for artifact verification against must_haves in PLAN frontmatter:
+Verify artifacts inline against must_haves in PLAN frontmatter:
 
 ```bash
+# Verify artifacts inline — for each artifact in must_haves.artifacts:
+# Check: file exists, line count >= min_lines, contains expected patterns
+for artifact_path in $(grep -A2 "path:" "$PLAN_PATH" | grep -oE '"[^"]+"' | tr -d '"'); do
+  [ -f "$artifact_path" ] && echo "EXISTS: $artifact_path ($(wc -l < "$artifact_path") lines)" || echo "MISSING: $artifact_path"
+done
 ```
 
 Parse JSON result: `{ all_passed, passed, total, artifacts: [{path, exists, issues, passed}] }`
@@ -176,9 +183,13 @@ grep -r "$artifact_name" "${search_path:-src/}" --include="*.ts" --include="*.ts
 
 Key links are critical connections. If broken, the goal fails even with all artifacts present.
 
-Use gsd-tools for key link verification against must_haves in PLAN frontmatter:
+Verify key links inline against must_haves in PLAN frontmatter:
 
 ```bash
+# Verify key links inline — for each key_link in must_haves.key_links:
+# Check: grep for the pattern in the "from" file to confirm wiring to "to"
+# Example: grep -E "fetch.*api/chat" src/components/Chat.tsx
+LINKS_RESULT="manual_verification_needed"
 ```
 
 Parse JSON result: `{ all_verified, verified, total, links: [{from, to, via, verified, detail}] }`
@@ -260,10 +271,16 @@ Identify files modified in this phase from SUMMARY.md key-files section, or extr
 
 ```bash
 # Option 1: Extract from SUMMARY frontmatter
+# Extract key files from SUMMARY.md frontmatter:
+SUMMARY_FILES=$(grep -A20 "key-files:" "$PHASE_DIR"/*-SUMMARY.md | grep -E "^\s+-" | sed 's/.*- //')
 
 # Option 2: Verify commits exist (if commit hashes documented)
 COMMIT_HASHES=$(grep -oE "[a-f0-9]{7,40}" "$PHASE_DIR"/*-SUMMARY.md | head -10)
 if [ -n "$COMMIT_HASHES" ]; then
+  # Verify commit hashes exist in git log:
+  for hash in $COMMIT_HASHES; do
+    git log --oneline --all | grep -q "$hash" && echo "FOUND: $hash" || echo "MISSING: $hash"
+  done
 fi
 
 # Fallback: grep for files

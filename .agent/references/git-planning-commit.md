@@ -1,21 +1,28 @@
 # Git Planning Commit
 
-Commit planning artifacts using the gsd-tools CLI, which automatically checks `commit_docs` config and gitignore status.
+Commit planning artifacts using standard git commands. Check `commit_docs` config and gitignore status before committing.
 
-## Commit via CLI
+## Commit planning files
 
-Always use `gsd-tools.cjs commit` for `.planning/` files — it handles `commit_docs` and gitignore checks automatically:
+Always check `commit_docs` before committing `.planning/` files:
 
 ```bash
+COMMIT_DOCS=$(cat .planning/config.json 2>/dev/null | grep -o '"commit_docs"[[:space:]]*:[[:space:]]*[a-z]*' | grep -o '[a-z]*$' || echo "true")
+if [ "$COMMIT_DOCS" = "true" ]; then
+  git add .planning/STATE.md .planning/ROADMAP.md
+  git commit -m "docs({scope}): {description}"
+fi
 ```
 
-The CLI will return `skipped` (with reason) if `commit_docs` is `false` or `.planning/` is gitignored. No manual conditional checks needed.
+Skip commit if `commit_docs` is `false` or `.planning/` is gitignored.
 
 ## Amend previous commit
 
 To fold `.planning/` file changes into the previous commit:
 
 ```bash
+git add .planning/codebase/*.md
+git commit --amend --no-edit
 ```
 
 ## Commit Message Patterns

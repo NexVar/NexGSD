@@ -86,74 +86,17 @@ Based on arguments and project type, select which audits to run:
 
 ### 3. Security Audit
 
-Perform a thorough security review of the codebase:
+Read and follow the agent instructions in `.agent/agents/gsd-security-auditor.md`.
 
-**3a. Secrets scan:**
-```bash
-# Check for hardcoded secrets
-grep -rn --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" --include="*.env*" -iE "(api_key|apikey|secret|password|token|private_key|aws_access|database_url)\s*[:=]\s*['\"][^'\"]{8,}" . --exclude-dir=node_modules --exclude-dir=.git 2>/dev/null
-```
-
-**3b. Dependency vulnerabilities:**
-```bash
-npm audit --json 2>/dev/null
-```
-
-**3c. Code-level security review:**
-For each source file, check for:
-- SQL injection (string concatenation in queries)
-- XSS (dangerouslySetInnerHTML, unescaped output)
-- Command injection (exec, spawn with user input)
-- Path traversal (user input in file paths)
-- Insecure randomness (Math.random for security)
-- Missing auth checks on API routes
-- CORS misconfiguration
-- Insecure cookie settings
-- Exposed error details in production
-
-**3d. Environment and config:**
-```bash
-# Check .gitignore for sensitive files
-cat .gitignore 2>/dev/null | grep -iE "(env|secret|key|credential)"
-
-# Check if .env files are committed
-git ls-files | grep -iE "\.env"
-```
+The security auditor agent handles: secrets scanning, dependency vulnerabilities, code-level security review (injection, XSS, auth, CORS, etc.), and environment/config checks.
 
 Record all findings with file, line, severity, and description.
 
 ### 4. Performance Audit
 
-**4a. Bundle analysis (if applicable):**
-```bash
-# Check bundle size
-npm run build 2>&1 | tail -30
+Read and follow the agent instructions in `.agent/agents/gsd-performance-tester.md`.
 
-# Look for large dependencies
-cat package.json | grep -E "dependencies|devDependencies" -A 50
-```
-
-**4b. Code-level performance review:**
-For source files, check for:
-- N+1 database queries (queries in loops)
-- Missing pagination on list endpoints
-- Unbounded data fetching
-- Missing memoization (React.memo, useMemo, useCallback)
-- Synchronous operations that should be async
-- Memory leaks (event listeners, intervals, subscriptions not cleaned up)
-- Unnecessary re-renders (object/array literals in JSX props)
-- Large component files that should be split
-- Missing lazy loading for routes/components
-- Unoptimized images (no next/image, no srcset, no lazy)
-
-**4c. Build configuration:**
-```bash
-# Check for source maps in production
-grep -rn "sourcemap\|source-map\|devtool" *.config.* 2>/dev/null
-
-# Check for tree shaking configuration
-grep -rn "sideEffects\|treeshake" package.json *.config.* 2>/dev/null
-```
+The performance tester agent handles: bundle analysis, code-level performance review (N+1 queries, memoization, memory leaks, lazy loading, etc.), and build configuration checks.
 
 Record all findings with file, line, severity, and description.
 
@@ -161,24 +104,9 @@ Record all findings with file, line, severity, and description.
 
 **Skip if project has no UI.**
 
-Review mobile responsiveness and usability:
-- Missing viewport meta tag
-- Fixed widths that break on mobile (hardcoded px widths)
-- Horizontal scroll issues (elements wider than viewport)
-- Touch target sizes (buttons/links smaller than 44x44px)
-- Missing responsive breakpoints
-- Text too small on mobile (font-size < 16px without scaling)
-- Missing mobile navigation pattern
-- Unresponsive tables or forms
-- Images without responsive sizing
+Read and follow the agent instructions in `.agent/agents/gsd-mobile-auditor.md`.
 
-```bash
-# Check for viewport meta tag
-grep -rn "viewport" --include="*.html" --include="*.tsx" --include="*.jsx" . --exclude-dir=node_modules 2>/dev/null
-
-# Check for responsive utilities/breakpoints
-grep -rn "@media\|useMediaQuery\|breakpoint" --include="*.css" --include="*.scss" --include="*.ts" --include="*.tsx" . --exclude-dir=node_modules 2>/dev/null | head -20
-```
+The mobile auditor agent handles: viewport meta tags, responsive breakpoints, touch target sizes, mobile navigation patterns, responsive images, and overall mobile usability.
 
 Record all findings with file, line, severity, and description.
 
@@ -186,28 +114,9 @@ Record all findings with file, line, severity, and description.
 
 **Skip if project has no public pages.**
 
-Check SEO fundamentals:
-- Missing or duplicate title tags
-- Missing meta descriptions
-- Missing Open Graph tags
-- Missing canonical URLs
-- Missing sitemap.xml
-- Missing robots.txt
-- Missing alt text on images
-- Missing semantic HTML (h1-h6 hierarchy)
-- Missing structured data (JSON-LD)
-- Client-side only rendering without SSR/SSG for public pages
+Read and follow the agent instructions in `.agent/agents/gsd-seo-checker.md`.
 
-```bash
-# Check for SEO meta tags
-grep -rn "<title\|<meta.*description\|og:title\|og:description" --include="*.html" --include="*.tsx" --include="*.jsx" . --exclude-dir=node_modules 2>/dev/null
-
-# Check for sitemap and robots
-ls public/sitemap.xml public/robots.txt 2>/dev/null
-
-# Check for alt attributes on images
-grep -rn "<img\|<Image" --include="*.tsx" --include="*.jsx" --include="*.html" . --exclude-dir=node_modules 2>/dev/null | grep -v "alt=" | head -10
-```
+The SEO checker agent handles: title tags, meta descriptions, Open Graph tags, canonical URLs, sitemap/robots.txt, alt text, semantic HTML, structured data, and SSR/SSG checks.
 
 Record all findings with file, line, severity, and description.
 
@@ -215,28 +124,9 @@ Record all findings with file, line, severity, and description.
 
 **Skip if project has no UI.**
 
-Check accessibility standards (WCAG 2.1):
-- Missing alt text on images
-- Missing ARIA labels on interactive elements
-- Missing form labels
-- Insufficient color contrast references
-- Missing keyboard navigation support
-- Missing focus indicators
-- Missing skip navigation link
-- Missing lang attribute on html element
-- Non-semantic use of div/span for interactive elements
-- Missing heading hierarchy
+Read and follow the agent instructions in `.agent/agents/gsd-accessibility-tester.md`.
 
-```bash
-# Check for aria attributes usage
-grep -rn "aria-\|role=" --include="*.tsx" --include="*.jsx" --include="*.html" . --exclude-dir=node_modules 2>/dev/null | wc -l
-
-# Check for form labels
-grep -rn "<input\|<select\|<textarea" --include="*.tsx" --include="*.jsx" . --exclude-dir=node_modules 2>/dev/null | grep -v "aria-label\|id=.*label" | head -10
-
-# Check for onClick on non-button elements
-grep -rn "onClick" --include="*.tsx" --include="*.jsx" . --exclude-dir=node_modules 2>/dev/null | grep -v "<button\|<a \|<Button\|<Link" | head -10
-```
+The accessibility tester agent handles: WCAG 2.1 compliance, alt text, ARIA labels, form labels, color contrast, keyboard navigation, focus indicators, semantic HTML, and heading hierarchy.
 
 Record all findings with file, line, severity, and description.
 
@@ -244,18 +134,9 @@ Record all findings with file, line, severity, and description.
 
 **Skip if no brand guidelines exist.**
 
-Check for brand consistency:
-```bash
-# Look for brand guidelines
-find .planning/ -iname "*brand*" -o -iname "*style*" -o -iname "*design*" 2>/dev/null
-```
+Read and follow the agent instructions in `.agent/agents/gsd-brand-reviewer.md`.
 
-**If brand guidelines found, read them and check:**
-- Color values match brand palette (no rogue hex values)
-- Typography matches brand fonts
-- Spacing follows the design system
-- Component usage follows design system
-- Copy tone matches brand voice
+The brand reviewer agent handles: color palette consistency, typography, spacing/design system compliance, component usage, and copy tone/voice matching.
 
 **If no brand guidelines:** Note "No brand guidelines found -- brand audit skipped."
 

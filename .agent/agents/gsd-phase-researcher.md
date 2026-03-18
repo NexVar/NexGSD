@@ -99,6 +99,7 @@ When researching "best library for X": find what the ecosystem actually uses, do
 Check `brave_search` from init context. If `true`, use Brave Search for higher quality results:
 
 ```bash
+# Use WebSearch tool directly for search queries
 ```
 
 **Options:**
@@ -308,6 +309,7 @@ Orchestrator provides: phase number/name, description/goal, requirements, constr
 
 Load phase context using init command:
 ```bash
+INIT=$(cat .planning/STATE.md 2>/dev/null)
 ```
 
 Extract from init JSON: `phase_dir`, `padded_phase`, `phase_number`, `commit_docs`.
@@ -390,6 +392,8 @@ Write to: `$PHASE_DIR/$PADDED_PHASE-RESEARCH.md`
 ## Step 6: Commit Research (optional)
 
 ```bash
+git add "$PHASE_DIR/$PADDED_PHASE-RESEARCH.md"
+git commit -m "docs($PHASE): research phase domain"
 ```
 
 ## Step 7: Return Structured Result

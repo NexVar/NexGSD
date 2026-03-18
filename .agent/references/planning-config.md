@@ -36,26 +36,36 @@ Configuration options for `.planning/` directory behavior.
 - User must add `.planning/` to `.gitignore`
 - Useful for: OSS contributions, client projects, keeping planning private
 
-**Using gsd-tools.cjs (preferred):**
+**Using git directly:**
 
 ```bash
-# Commit with automatic commit_docs + gitignore checks:
+# Commit planning files (check commit_docs config first):
+COMMIT_DOCS=$(cat .planning/config.json 2>/dev/null | grep -o '"commit_docs"[[:space:]]*:[[:space:]]*[a-z]*' | grep -o '[a-z]*$' || echo "true")
+if [ "$COMMIT_DOCS" = "true" ]; then
+  git add .planning/STATE.md
+  git commit -m "docs: update state"
+fi
 
-# Load config via state load (returns JSON):
-# commit_docs is available in the JSON output
+# Load state directly:
+INIT=$(cat .planning/STATE.md 2>/dev/null)
 
-# Or use init commands which include commit_docs:
-# commit_docs is included in all init command outputs
+# Read config:
+cat .planning/config.json 2>/dev/null
 ```
 
 **Auto-detection:** If `.planning/` is gitignored, `commit_docs` is automatically `false` regardless of config.json. This prevents git errors when users have `.planning/` in `.gitignore`.
 
-**Commit via CLI (handles checks automatically):**
+**Commit planning files (check config first):**
 
 ```bash
+COMMIT_DOCS=$(cat .planning/config.json 2>/dev/null | grep -o '"commit_docs"[[:space:]]*:[[:space:]]*[a-z]*' | grep -o '[a-z]*$' || echo "true")
+if [ "$COMMIT_DOCS" = "true" ]; then
+  git add .planning/STATE.md
+  git commit -m "docs: update state"
+fi
 ```
 
-The CLI checks `commit_docs` config and gitignore status internally — no manual conditionals needed.
+Check `commit_docs` config and gitignore status before committing planning files.
 
 </commit_docs_behavior>
 
@@ -140,12 +150,10 @@ To use uncommitted mode:
 
 Use `init execute-phase` which returns all config as JSON:
 ```bash
-# JSON output includes: branching_strategy, phase_branch_template, milestone_branch_template
-```
-
-Or use `state load` for the config values:
-```bash
-# Parse branching_strategy, phase_branch_template, milestone_branch_template from JSON
+INIT=$(cat .planning/STATE.md 2>/dev/null)
+# Read branching config from config.json:
+cat .planning/config.json 2>/dev/null
+# Extract: branching_strategy, phase_branch_template, milestone_branch_template
 ```
 
 **Branch creation:**

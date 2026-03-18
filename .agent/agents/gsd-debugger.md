@@ -981,6 +981,7 @@ mv .planning/debug/{slug}.md .planning/debug/resolved/
 **Check planning config using state load (commit_docs is available from the output):**
 
 ```bash
+INIT=$(cat .planning/STATE.md 2>/dev/null)
 # commit_docs is in the JSON output
 ```
 
@@ -997,6 +998,8 @@ Root cause: {root_cause}"
 
 Then commit planning docs via CLI (respects `commit_docs` config automatically):
 ```bash
+git add .planning/debug/resolved/{slug}.md
+git commit -m "docs: resolve debug {slug}"
 ```
 
 Report completion and offer next steps.

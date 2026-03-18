@@ -300,6 +300,7 @@ issue:
 
 Load phase operation context:
 ```bash
+INIT=$(cat .planning/STATE.md 2>/dev/null)
 ```
 
 Extract from init JSON: `phase_dir`, `phase_number`, `has_plans`, `plan_count`.
@@ -308,6 +309,7 @@ Orchestrator provides CONTEXT.md content in the verification prompt. If provided
 
 ```bash
 ls "$phase_dir"/*-PLAN.md 2>/dev/null
+grep -A20 "### Phase $phase_number" .planning/ROADMAP.md
 ls "$phase_dir"/*-BRIEF.md 2>/dev/null
 ```
 
@@ -315,11 +317,18 @@ ls "$phase_dir"/*-BRIEF.md 2>/dev/null
 
 ## Step 2: Load All Plans
 
-Use gsd-tools to validate plan structure:
+Validate plan structure inline:
 
 ```bash
 for plan in "$PHASE_DIR"/*-PLAN.md; do
   echo "=== $plan ==="
+  # Verify plan structure inline — check XML elements:
+  TASK_COUNT=$(grep -c '<task ' "$plan")
+  NAME_COUNT=$(grep -c '<name>' "$plan")
+  ACTION_COUNT=$(grep -c '<action>' "$plan")
+  VERIFY_COUNT=$(grep -c '<verify>' "$plan")
+  DONE_COUNT=$(grep -c '<done>' "$plan")
+  echo "Plan: $plan — Tasks: $TASK_COUNT, Names: $NAME_COUNT, Actions: $ACTION_COUNT, Verify: $VERIFY_COUNT, Done: $DONE_COUNT"
   echo "$PLAN_STRUCTURE"
 done
 ```
@@ -334,9 +343,11 @@ Map errors/warnings to verification dimensions:
 
 ## Step 3: Parse must_haves
 
-Extract must_haves from each plan using gsd-tools:
+Extract must_haves from each plan frontmatter:
 
 ```bash
+# Extract must_haves from plan frontmatter manually:
+MUST_HAVES=$(sed -n '/^must_haves:/,/^---$/p' "$PLAN_PATH")
 ```
 
 Returns JSON: `{ truths: [...], artifacts: [...], key_links: [...] }`
@@ -376,9 +387,11 @@ For each requirement: find covering task(s), verify action is specific, flag gap
 
 ## Step 5: Validate Task Structure
 
-Use gsd-tools plan-structure verification (already run in Step 2):
+Use plan-structure verification (already run in Step 2):
 
 ```bash
+# Verify plan structure inline — check required XML elements per task:
+PLAN_STRUCTURE=$(grep -cE '<(task|name|action|verify|done)>' "$PLAN_PATH")
 ```
 
 The `tasks` array in the result shows each task's completeness:
@@ -389,7 +402,7 @@ The `tasks` array in the result shows each task's completeness:
 
 **Check:** valid task type (auto, checkpoint:*, tdd), auto tasks have files/action/verify/done, action is specific, verify is runnable, done is measurable.
 
-**For manual validation of specificity** (gsd-tools checks structure, not content quality):
+**For manual validation of specificity** (structural checks verify format, not content quality):
 ```bash
 grep -B5 "</task>" "$PHASE_DIR"/*-PLAN.md | grep -v "<verify>"
 ```

@@ -16,14 +16,14 @@ Execute ALL remaining phases in ROADMAP.md autonomously:
 </objective>
 <critical-rules>
 ## The 4 GSD Rules (NEVER violate)
-1. PLANNING LOCK: Never code without a FINALIZED spec. Read .gsd/SPEC.md — if status ≠ FINALIZED, STOP.
+1. PLANNING LOCK: Never code without a FINALIZED spec. Read .planning/PROJECT.md — if status ≠ FINALIZED, STOP.
 2. COMMAND BEFORE OPINION: Always run the command, read the file, check output. Never assume.
 3. ATOMIC COMMITS: One task = one commit. Format: `phase-N/task-M: descriptive message`
 4. EMPIRICAL VERIFICATION: Terminal output as proof. "Should work" is NOT verification.
 Autopilot Rules
 
 BRANCH SAFETY: Create gsd-autopilot/<timestamp> branch before ANY work. Never commit to main.
-STATE PERSISTENCE: Update .gsd/STATE.md after EVERY phase. STATE.md is your recovery checkpoint.
+STATE PERSISTENCE: Update .planning/STATE.md after EVERY phase. STATE.md is your recovery checkpoint.
 FILE-FIRST CONTEXT: Re-read SPEC, ROADMAP, STATE at each phase start. Never rely on conversation memory.
 NO HALLUCINATION: Before using ANY API/library — verify it exists via npm list, grep, or docs.
 </critical-rules>
@@ -39,7 +39,7 @@ Detection & Recovery
 
 SAME ERROR 3x → Stop approach entirely. Log failure. Try completely different approach.
 CIRCULAR FIX (A→B→A→B) → Re-read ALL files from disk. Start task fresh with file-based context only.
-5 APPROACHES FAIL → STOP AUTOPILOT. Write blocker to .gsd/STATE.md:
+5 APPROACHES FAIL → STOP AUTOPILOT. Write blocker to .planning/STATE.md:
 BLOCKER — Autopilot Stopped
 Task: [name] Phase: [N]
 Approaches: 1)[what→why failed] 2)... 3)... 4)... 5)...
@@ -103,10 +103,10 @@ Never use any, @ts-ignore, or eslint-disable to make checks pass.
 <process>
 ## Phase 0: Initialization (Run Once)
 0.1 Read Project State
-READ .gsd/SPEC.md → Confirm status = FINALIZED
-READ .gsd/ROADMAP.md → Get all phases and status
-READ .gsd/STATE.md → Current position, decisions, blockers
-If SPEC.md missing or not finalized → STOP. Tell user to run /new-project.
+READ .planning/PROJECT.md → Confirm status = FINALIZED
+READ .planning/ROADMAP.md → Get all phases and status
+READ .planning/STATE.md → Current position, decisions, blockers
+If PROJECT.md missing or not finalized → STOP. Tell user to run /new-project.
 0.2 Create Safe Branch
 bashBRANCH_NAME="gsd-autopilot/$(date +%Y%m%d-%H%M%S)"
 git checkout -b "$BRANCH_NAME"
@@ -120,11 +120,11 @@ Find first phase with status ≠ ✅ COMPLETED. If argument given (e.g. 2), star
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase Loop: Repeat for Each Incomplete Phase
 Step 1: CONTEXT LOAD
-READ .gsd/SPEC.md, ROADMAP.md, STATE.md, ARCHITECTURE.md (if exists), STACK.md (if exists)
+READ .planning/PROJECT.md, ROADMAP.md, STATE.md, ARCHITECTURE.md (if exists), STACK.md (if exists)
 Fresh context every phase — no stale memory.
 Step 2: PLAN
 
-Read .agent/skills/planner/SKILL.md + .agent/skills/context-fetch/SKILL.md
+Read .agent/agents/gsd-planner.md + .agent/agents/gsd-project-researcher.md
 Generate .planning/phase-{N}/PLAN.md with structured XML:
 
 xml<phase number="N" name="Phase Name">
@@ -140,11 +140,11 @@ xml<phase number="N" name="Phase Name">
   </wave>
 </phase>
 
-Read .agent/skills/plan-checker/SKILL.md → validate plan before executing
+Read .agent/agents/gsd-plan-checker.md → validate plan before executing
 
 Step 3: EXECUTE
 
-Read .agent/skills/executor/SKILL.md + the PLAN.md just created
+Read .agent/agents/gsd-executor.md + the PLAN.md just created
 Before executing tasks, ensure `dev` branch exists and is active:
 ```bash
 if ! git rev-parse --verify dev >/dev/null 2>&1; then
@@ -163,17 +163,17 @@ f) If last task in wave → move to next wave
 
 Step 4: PHASE VERIFICATION
 
-Read .agent/skills/verifier/SKILL.md + .agent/skills/empirical-validation/SKILL.md
+Read .agent/agents/gsd-verifier.md
 Run FULL 5-tier verification suite
 Run npm run build — confirm clean output
 If build output exists (e.g. out/ for Next.js), verify it's populated
 
 PASS:
-Update .gsd/STATE.md:
+Update .planning/STATE.md:
 Phase {N}: {Name}
 Status: ✅ COMPLETED | Completed: {timestamp}
 Tasks: {done}/{total} | Verification: PASSED
-Update .gsd/ROADMAP.md: mark phase ✅
+Update .planning/ROADMAP.md: mark phase ✅
 Run mandatory post-phase git automation (no prompt):
 git add -A
 git commit --allow-empty -m "GSD: phase complete - $(date +%H:%M)"
@@ -189,7 +189,7 @@ Step 5: TRANSITION
 Increment phase → GOTO Step 1
 Completion: All Phases Done
 Final npm run build. Verify all phases ✅ in ROADMAP.md.
-Update .gsd/STATE.md:
+Update .planning/STATE.md:
 ## 🏆 AUTOPILOT COMPLETE
 Branch: {name} | Phases: {N}/{N} ✅ | Commits: {count}
 Phase Summary:
@@ -207,8 +207,8 @@ Next: git diff main...{branch} → review | git checkout main && git merge {bran
 ## If Context is Lost Mid-Autopilot (model switch, timeout, crash)
 User restarts /autopilot and it recovers automatically:
 
-READ .gsd/STATE.md → find last completed phase and any in-progress notes
-READ .gsd/ROADMAP.md → find next incomplete phase
+READ .planning/STATE.md → find last completed phase and any in-progress notes
+READ .planning/ROADMAP.md → find next incomplete phase
 CHECK git log --oneline -20 → verify last committed task, confirm branch
 If mid-phase: find last committed task number, resume from next task
 If between phases: start next incomplete phase normally
@@ -218,8 +218,8 @@ Recovery should be seamless. The user should never need to explain where you lef
 </context-recovery>
 <token-optimization>
 ## Keep Context Lean
-- Read .agent/skills/token-budget/SKILL.md for token management strategy
-- Read .agent/skills/context-compressor/SKILL.md for compression techniques
+- Follow token management best practices — keep context lean
+- Use compression techniques — summarize completed phases, drop stale details
 - Don't read files you don't need for the current task
 - Use search (grep/ripgrep) before reading entire files
 - Each phase starts with fresh context — don't carry old phase baggage
@@ -233,12 +233,12 @@ Structural Safeguards (work regardless of which model is active)
 
 ALL instructions live in files, not conversation memory
 ALL verification is empirical (run command → check output)
-ALL state is persisted in .gsd/STATE.md
+ALL state is persisted in .planning/STATE.md
 NO reliance on model-specific features or behaviors
 
 After Suspected Model Switch (style change, sudden quality drop)
 
-Re-read .gsd/STATE.md and current PLAN.md from disk
+Re-read .planning/STATE.md and current PLAN.md from disk
 Re-read PROJECT_RULES.md if it exists
 Verify last task's output is still correct by running its verify command
 Continue with extra verification on next 2 tasks (run all 5 tiers, not just 1-2)

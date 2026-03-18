@@ -22,8 +22,8 @@ This workflow extracts architectural decisions, pivots, and "lessons learned" fr
 
 ## 3. Distillation & Commit
 - [ ] Synthesize the gathered info with the current project status.
-- [ ] Use `gsd-tools.js commit-memory` to save the distillation.
-- [ ] **Command**: `node bin/gsd-tools.js commit-memory "[Summary of decisions and architectural principles]"`
+- [ ] Save the distillation to `.planning/memory/PROJECT-MEMORY.md` using the Write tool.
+- [ ] **Command**: Append the synthesized decisions and principles to `.planning/memory/PROJECT-MEMORY.md`
 
 ## 4. Verification
 - [ ] Read `.planning/memory/PROJECT-MEMORY.md` to ensure the entry was appended correctly.

@@ -37,7 +37,10 @@ Output: [What artifacts will be created]
 </objective>
 
 <execution_context>
+@.agent/workflows/gsd-execute.md
+@.agent/templates/summary.md
 [If plan contains checkpoint tasks (type="checkpoint:*"), add:]
+@.agent/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -72,6 +75,7 @@ Output: [What artifacts will be created]
   <done>[Acceptance criteria]</done>
 </task>
 
+<!-- For checkpoint task examples and patterns, see @.agent/references/checkpoints.md -->
 
 <task type="checkpoint:decision" gate="blocking">
   <decision>[What needs deciding]</decision>
@@ -263,6 +267,7 @@ TDD features get dedicated plans with `type: tdd`.
 → Yes: Create a TDD plan
 → No: Standard task in standard plan
 
+See `.agent/references/tdd.md` for TDD plan structure.
 
 ---
 
@@ -365,6 +370,9 @@ Output: Working dashboard component.
 </objective>
 
 <execution_context>
+@.agent/workflows/gsd-execute.md
+@.agent/templates/summary.md
+@.agent/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -483,6 +491,7 @@ user_setup:
 
 **Result:** Execute-plan generates `{phase}-USER-SETUP.md` with checklist for the user.
 
+See `.agent/templates/user-setup.md` for full schema and examples
 
 ---
 
@@ -549,3 +558,4 @@ Task completion ≠ Goal achievement. A task "create chat component" can complet
 5. Gaps found → fix plans created → execute → re-verify
 6. All must_haves pass → phase complete
 
+See `.agent/workflows/gsd-verify.md` for verification logic.

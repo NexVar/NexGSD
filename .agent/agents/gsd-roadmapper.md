@@ -322,9 +322,11 @@ After roadmap creation, REQUIREMENTS.md gets updated with phase mappings:
 | 2. Name | 0/2 | Not started | - |
 ```
 
+Reference full template: `.agent/templates/roadmap.md`
 
 ## STATE.md Structure
 
+Use template from `.agent/templates/state.md`.
 
 Key sections:
 - Project Reference (core value, current focus)

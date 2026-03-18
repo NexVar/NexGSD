@@ -51,6 +51,8 @@ Phases:
 What to commit:
 
 ```bash
+git add .planning/
+git commit -m "docs: initialize [project-name] ([N] phases)"
 ```
 
 </format>
@@ -128,6 +130,8 @@ SUMMARY: .planning/phases/XX-name/{phase}-{plan}-SUMMARY.md
 What to commit:
 
 ```bash
+git add .planning/phases/XX-name/{phase}-{plan}-PLAN.md .planning/phases/XX-name/{phase}-{plan}-SUMMARY.md .planning/STATE.md .planning/ROADMAP.md
+git commit -m "docs({phase}-{plan}): complete [plan-name] plan"
 ```
 
 **Note:** Code files NOT included - already committed per-task.
@@ -147,6 +151,8 @@ Current: [task name]
 What to commit:
 
 ```bash
+git add .planning/
+git commit -m "wip: [phase-name] paused at task [X]/[Y]"
 ```
 
 </format>

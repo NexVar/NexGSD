@@ -9,11 +9,15 @@ From `$ARGUMENTS`:
 - Extract flags (prefixed with `--`)
 - Remaining text is description (for insert/add commands)
 
-## Using gsd-tools
+## Finding Phase Directory
 
-The `find-phase` command handles normalization and validation in one step:
+Normalize and find the phase directory:
 
 ```bash
+# Normalize phase number and find directory
+PADDED=$(printf "%02d" "$PHASE" 2>/dev/null || echo "$PHASE")
+PHASE_DIR=$(ls -d .planning/phases/${PADDED}-* 2>/dev/null | head -1)
+PHASE_INFO="directory: $PHASE_DIR"
 ```
 
 Returns JSON with:
@@ -44,6 +48,7 @@ fi
 Use `roadmap get-phase` to validate phase exists:
 
 ```bash
+PHASE_CHECK=$(grep -A20 "### Phase ${PHASE}" .planning/ROADMAP.md)
 if [ "$(echo "$PHASE_CHECK" | jq -r '.found')" = "false" ]; then
   echo "ERROR: Phase ${PHASE} not found in roadmap"
   exit 1
@@ -55,4 +60,6 @@ fi
 Use `find-phase` for directory lookup:
 
 ```bash
+PADDED=$(printf "%02d" "$PHASE" 2>/dev/null || echo "$PHASE")
+PHASE_DIR=$(ls -d .planning/phases/${PADDED}-* 2>/dev/null | head -1)
 ```

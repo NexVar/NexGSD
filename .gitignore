@@ -6,3 +6,25 @@ PROJECT_RULES.md
 GSD-STYLE.md
 model_capabilities.yaml
 # -----------------------------------
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment files
+.env*
+
+# Editor swap files
+*.swp
+*.swo
+
+# IDE directories
+.vscode/
+.idea/

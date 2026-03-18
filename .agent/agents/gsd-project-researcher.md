@@ -95,6 +95,7 @@ Always include current year. Use multiple query variations. Mark WebSearch-only 
 Check `brave_search` from orchestrator context. If `true`, use Brave Search for higher quality results:
 
 ```bash
+# Use WebSearch tool directly for search queries
 ```
 
 **Options:**

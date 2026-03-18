@@ -49,7 +49,7 @@ cat .planning/research/FEATURES.md
 cat .planning/research/ARCHITECTURE.md
 cat .planning/research/PITFALLS.md
 
-# Planning config loaded via gsd-tools.cjs in commit step
+# Planning config loaded from .planning/config.json in commit step
 ```
 
 Parse each file to extract:
@@ -119,6 +119,7 @@ Identify gaps that couldn't be resolved and need attention during planning.
 
 ## Step 6: Write SUMMARY.md
 
+Use template: .agent/templates/summary.md
 
 Write to `.planning/research/SUMMARY.md`
 
@@ -127,6 +128,8 @@ Write to `.planning/research/SUMMARY.md`
 The 4 parallel researcher agents write files but do NOT commit. You commit everything together.
 
 ```bash
+git add .planning/research/
+git commit -m "docs: complete project research"
 ```
 
 ## Step 8: Return Summary
@@ -137,6 +140,7 @@ Return brief confirmation with key points for the orchestrator.
 
 <output_format>
 
+Use template: .agent/templates/summary.md
 
 Key sections:
 - Executive Summary (2-3 paragraphs)

@@ -350,6 +350,8 @@ Output: [Artifacts created]
 </objective>
 
 <execution_context>
+@.agent/workflows/gsd-execute.md
+@.agent/templates/summary.md
 </execution_context>
 
 <context>
@@ -779,6 +781,8 @@ Group by plan, dimension, severity.
 ### Step 6: Commit
 
 ```bash
+git add .planning/phases/$PHASE-*/$PHASE-*-PLAN.md
+git commit -m "fix($PHASE): revise plans based on checker feedback"
 ```
 
 ### Step 7: Return Revision Summary
@@ -817,6 +821,7 @@ Group by plan, dimension, severity.
 Load planning context:
 
 ```bash
+INIT=$(cat .planning/STATE.md 2>/dev/null)
 ```
 
 Extract from init JSON: `planner_model`, `researcher_model`, `checker_model`, `commit_docs`, `research_enabled`, `phase_dir`, `phase_number`, `has_research`, `has_context`.
@@ -872,6 +877,13 @@ Apply discovery level protocol (see discovery_levels section).
 
 **Step 1 — Generate digest index:**
 ```bash
+# Generate digest from SUMMARY.md files across all phases:
+for phase_dir in .planning/phases/*/; do
+  echo "=== $(basename "$phase_dir") ==="
+  for summary in "$phase_dir"*-SUMMARY.md; do
+    [ -f "$summary" ] && head -30 "$summary"
+  done
+done
 ```
 
 **Step 2 — Select relevant phases (typically 2-4):**
@@ -986,9 +998,12 @@ Include all frontmatter fields.
 </step>
 
 <step name="validate_plan">
-Validate each created PLAN.md using gsd-tools:
+Validate each created PLAN.md inline:
 
 ```bash
+# Validate plan frontmatter manually — check required fields exist:
+VALID=$(head -50 "$PLAN_PATH" | grep -cE "^(phase|plan|type|wave|depends_on|files_modified|autonomous|must_haves):")
+# All 8 required fields must be present
 ```
 
 Returns JSON: `{ valid, missing, present, schema }`
@@ -1001,6 +1016,11 @@ Required plan frontmatter fields:
 Also validate plan structure:
 
 ```bash
+# Verify plan structure — check for required XML elements in each task:
+TASK_COUNT=$(grep -c '<task ' "$PLAN_PATH")
+MISSING_NAME=$(grep -c '<task ' "$PLAN_PATH"); NAME_COUNT=$(grep -c '<name>' "$PLAN_PATH")
+MISSING_ACTION=$(grep -c '<task.*type="auto"' "$PLAN_PATH"); ACTION_COUNT=$(grep -c '<action>' "$PLAN_PATH")
+# Check: each auto task has <name>, <action>, <verify>, <done>
 ```
 
 Returns JSON: `{ valid, errors, warnings, task_count, tasks }`
@@ -1037,6 +1057,8 @@ Plans:
 
 <step name="git_commit">
 ```bash
+git add .planning/phases/$PHASE-*/$PHASE-*-PLAN.md .planning/ROADMAP.md
+git commit -m "docs($PHASE): create phase plan"
 ```
 </step>
 

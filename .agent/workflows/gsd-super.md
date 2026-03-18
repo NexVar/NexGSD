@@ -1208,6 +1208,34 @@ git push origin main
 
 ---
 
+## Stage 6 — Post-Execution: Quality Audit
+
+After all phases complete and verify, run the audit workflow:
+
+Read and follow `.agent/workflows/gsd-audit.md` to run a full quality audit.
+This covers: security, performance, mobile, SEO, accessibility, brand.
+
+---
+
+## Stage 7 — Post-Audit: Deploy (if configured)
+
+If `.planning/gsd-config.json` has `deploy_platform` set:
+Read and follow `.agent/workflows/gsd-deploy.md` to deploy to production.
+
+---
+
+## Stage 8 — Send Notification
+
+If ntfy is configured in gsd-config.json:
+```bash
+NTFY_TOPIC=$(cat .planning/gsd-config.json 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('ntfy_topic',''))" 2>/dev/null)
+if [ -n "$NTFY_TOPIC" ]; then
+  curl -s -H "Title: GSD Super Complete" -d "Proje tamamlandi! Tum fazlar, audit ve deploy bitti." ntfy.sh/$NTFY_TOPIC
+fi
+```
+
+---
+
 ## Safety Guardrails
 
 ### Non-Negotiable Rules
