@@ -83,7 +83,7 @@ When I say /gsd-[command], read and follow .agent/workflows/gsd-[command].md
 Available agents are in .agent/agents/
 ```
 
-### Cursor / Windsurf / Cline (IDE Agents)
+### Cursor / Windsurf / Cline / Google Antigravity / VS Code (IDE Agents)
 
 1. Install MertGSD to your project: `bash mertgsd-install.sh .`
 2. Open your project in the IDE
