@@ -2,9 +2,9 @@
 
 ## Overview
 
-Super Mode (`/gsd-super`) is GSD Antigravity's fully autonomous execution mode. This reference documents the algorithms, protocols, and safety mechanisms that make autonomous operation reliable.
+Super Mode (`/mertgsd-super`) is MertGSD Antigravity's fully autonomous execution mode. This reference documents the algorithms, protocols, and safety mechanisms that make autonomous operation reliable.
 
-> **This is a 🆕 GSD Antigravity invention.** Not found in the original GSD or any other AI coding tool.
+> **This is a 🆕 MertGSD Antigravity invention.** Not found in the original MertGSD or any other AI coding tool.
 
 ---
 
@@ -268,8 +268,8 @@ DETECTION:
     - LICENSE
 
 BRANCH RULES:
-  1. Create branch: gsd-super/[feature-name-from-prd]
-     - Name derived from PRD: "Add user dashboard" → gsd-super/user-dashboard
+  1. Create branch: mertgsd-super/[feature-name-from-prd]
+     - Name derived from PRD: "Add user dashboard" → mertgsd-super/user-dashboard
      - Sanitize: lowercase, hyphens, no special chars
      
   2. All commits go to this branch
@@ -357,13 +357,13 @@ RULES:
 This file is created during the interview and referenced throughout execution:
 
 ```markdown
-# GSD Super Configuration
+# MertGSD Super Configuration
 
 ## Project
 - **Name**: [from PRD/prompt]
 - **Description**: [1-2 sentence summary]
 - **Type**: [New project / Enhancement to existing]
-- **Branch**: [main / gsd-super/feature-name]
+- **Branch**: [main / mertgsd-super/feature-name]
 
 ## User Preferences
 - **Autonomy Mode**: [A/B/C]
@@ -402,7 +402,7 @@ This file is created during the interview and referenced throughout execution:
 Updated after every task during execution:
 
 ```markdown
-# GSD Super Progress
+# MertGSD Super Progress
 
 ## Overall
 - **Status**: [IN PROGRESS / COMPLETE / STUCK]

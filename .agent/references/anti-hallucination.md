@@ -62,8 +62,8 @@ After any checkpoint or verification step:
 RULE: Start a new conversation for each major workflow phase.
 ```
 
-The original GSD uses `/clear` to get a fresh context window. In Antigravity:
-- **Between phases**: Recommend "start a new conversation, then run `/gsd-execute 2`"
+The original MertGSD uses `/clear` to get a fresh context window. In Antigravity:
+- **Between phases**: Recommend "start a new conversation, then run `/mertgsd-execute 2`"
 - **Between plan and execute**: Each should ideally be a separate conversation
 - **If context feels stale**: Re-read STATE.md and the relevant plan files from scratch
 - **After errors**: Re-read the original plan before retrying — don't rely on your memory of it

@@ -2,7 +2,7 @@
 
 **The open-source AI agent framework for structured project execution.** Plan, build, audit, and deploy — fully autonomous or human-in-the-loop.
 
-MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. 18 specialized agents + 18 workflows that handle everything from initial research to production deployment.
+MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. 18 specialized agents + 44 workflows that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
 
 
 > *"I built this because every AI coding tool is great at writing code but terrible at managing projects. MertGSD bridges that gap."* — <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>
@@ -34,20 +34,20 @@ git clone https://github.com/mertdlkr/MertGSD.git
 ### Add to your project
 
 ```bash
-bash MertGSD/mertgsd-install.sh /path/to/your-project
+./MertGSD/mertgsd-install /path/to/your-project
 ```
 
-This copies `.agent/` (18 agents + 18 workflows) into your project directory.
+This copies `.agent/` (18 agents + 44 workflows) into your project directory.
 
 ### Start building
 
 ```bash
-/gsd-new-project
+/mertgsd-new-project
 ```
 
 **Full autonomous mode:**
 ```
-/gsd-super "Build a SaaS dashboard with auth, billing, and real-time analytics"
+/mertgsd-super "Build a SaaS dashboard with auth, billing, and real-time analytics"
 ```
 
 ---
@@ -58,11 +58,11 @@ This copies `.agent/` (18 agents + 18 workflows) into your project directory.
 
 ```bash
 cd your-project
-/gsd-new-project          # Initialize project
-/gsd-plan 1               # Plan phase 1
-/gsd-execute 1            # Execute with atomic commits
-/gsd-audit                # Full quality audit
-/gsd-deploy               # Deploy to production
+/mertgsd-new-project          # Initialize project
+/mertgsd-plan 1               # Plan phase 1
+/mertgsd-execute 1            # Execute with atomic commits
+/mertgsd-audit                # Full quality audit
+/mertgsd-deploy               # Deploy to production
 ```
 
 ### GitHub Copilot CLI / OpenAI Codex CLI
@@ -71,25 +71,25 @@ The `.agent/` directory works as context files. Point the CLI to read them:
 
 ```bash
 # Copilot CLI
-copilot "Read .agent/workflows/gsd-new-project.md and follow the workflow to initialize this project"
+copilot "Read .agent/workflows/mertgsd-new-project.md and follow the workflow to initialize this project"
 
 # Codex CLI
-codex "Follow the workflow in .agent/workflows/gsd-super.md to build: [your prompt]"
+codex "Follow the workflow in .agent/workflows/mertgsd-super.md to build: [your prompt]"
 ```
 
 Add a `.github/copilot-instructions.md` referencing MertGSD:
 ```markdown
-When I say /gsd-[command], read and follow .agent/workflows/gsd-[command].md
+When I say /mertgsd-[command], read and follow .agent/workflows/mertgsd-[command].md
 Available agents are in .agent/agents/
 ```
 
 ### Cursor / Windsurf / Cline / Google Antigravity / VS Code (IDE Agents)
 
-1. Install MertGSD to your project: `bash mertgsd-install.sh .`
+1. Install MertGSD to your project: `./mertgsd-install .`
 2. Open your project in the IDE
 3. Reference workflows in chat:
-   - "Follow .agent/workflows/gsd-new-project.md to set up this project"
-   - "Use the gsd-security-auditor agent to scan for vulnerabilities"
+   - "Follow .agent/workflows/mertgsd-new-project.md to set up this project"
+   - "Use the mertgsd-security-auditor agent to scan for vulnerabilities"
 4. The IDE agent reads the `.agent/` files as context and follows the structured workflows
 
 ### Any LLM / Custom Setup
@@ -98,107 +98,137 @@ MertGSD agents and workflows are plain Markdown files. Any LLM that can read fil
 
 ```
 System prompt: "You have access to a project management framework in .agent/.
-Read .agent/workflows/gsd-help.md for available commands. When the user requests
+Read .agent/workflows/mertgsd-help.md for available commands. When the user requests
 a workflow, read and follow the corresponding .md file step by step."
 ```
 
 ---
 
-## Default Workflow (The GSD Loop)
+## Default Workflow (The MertGSD Loop)
 
 This is how most projects flow from idea to production:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    THE GSD LOOP                              │
+│                    THE MERTGSD LOOP                           │
 │                                                              │
 │  ┌──────────────┐                                           │
-│  │ /gsd-new-project │  ← You describe what to build         │
+│  │ /mertgsd-new-project │  ← You describe what to build         │
 │  └──────┬───────┘                                           │
 │         │  Creates: PROJECT.md, REQUIREMENTS.md,            │
-│         │  ROADMAP.md, STATE.md, gsd-config.json            │
+│         │  ROADMAP.md, STATE.md, mertgsd-config.json            │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /gsd-plan N  │  ← Research + create task plans           │
+│  │ /mertgsd-plan N  │  ← Research + create task plans           │
 │  └──────┬───────┘                                           │
 │         │  Creates: RESEARCH.md, PLAN.md files              │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /gsd-execute N│  ← Build with atomic commits             │
+│  │ /mertgsd-execute N│  ← Build with atomic commits             │
 │  └──────┬───────┘                                           │
 │         │  Creates: SUMMARY.md, VERIFICATION.md             │
 │         │  Sends: push notification ✓                       │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /gsd-verify N│  ← User acceptance testing                │
+│  │ /mertgsd-verify N│  ← User acceptance testing                │
 │  └──────┬───────┘                                           │
 │         │                                                    │
-│         ├── Pass? → Next phase (repeat from /gsd-plan N+1)  │
-│         └── Gaps? → /gsd-plan N --gaps (fix and re-execute) │
+│         ├── Pass? → Next phase (repeat from /mertgsd-plan N+1)  │
+│         └── Gaps? → /mertgsd-plan N --gaps (fix and re-execute) │
 │                                                              │
 │  After all phases:                                           │
 │  ┌──────────────┐                                           │
-│  │ /gsd-audit   │  ← Security, performance, mobile, SEO,   │
+│  │ /mertgsd-audit   │  ← Security, performance, mobile, SEO,   │
 │  └──────┬───────┘    accessibility, brand review             │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /gsd-deploy  │  ← Build, deploy, verify live URL         │
+│  │ /mertgsd-deploy  │  ← Build, deploy, verify live URL         │
 │  └──────────────┘                                           │
 │                                                              │
-│  SHORTCUT: /gsd-super does ALL of this autonomously         │
+│  SHORTCUT: /mertgsd-super does ALL of this autonomously         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 **For quick tasks** that don't need full project setup:
 ```
-/gsd-quick "Add dark mode toggle to the navbar"
+/mertgsd-quick "Add dark mode toggle to the navbar"
 ```
 
 ---
 
-## All Commands (18)
+## Command Surface
 
 ### Core
 
 | Command | What it does |
 |---------|-------------|
-| `/gsd-super [prompt]` | Full autonomy — prompt to production, zero human input |
-| `/gsd-new-project` | Interactive setup: questions → research → requirements → roadmap → config |
-| `/gsd-no-halluc [question]` | Verified Q&A with mandatory external research and citations |
+| `/mertgsd-super [prompt]` | Full autonomy — prompt to production, zero human input |
+| `/mertgsd-new-project` | Interactive setup: questions → research → requirements → roadmap → config |
+| `/mertgsd-no-halluc [question]` | Verified Q&A with mandatory external research and citations |
 
 ### Build Cycle
 
 | Command | What it does |
 |---------|-------------|
-| `/gsd-discuss [phase]` | Capture implementation decisions before planning |
-| `/gsd-plan [phase]` | Research and create executable task plans |
-| `/gsd-execute [phase]` | Execute plans with atomic git commits |
-| `/gsd-verify [phase]` | User acceptance testing against phase goals |
+| `/mertgsd-discuss [phase]` | Capture implementation decisions before planning |
+| `/mertgsd-plan [phase]` | Research and create executable task plans |
+| `/mertgsd-execute [phase]` | Execute plans with atomic git commits |
+| `/mertgsd-verify [phase]` | User acceptance testing against phase goals |
 
 ### Quality & Review
 
 | Command | What it does |
 |---------|-------------|
-| `/gsd-audit` | Full project audit — 6 agents in parallel |
-| `/gsd-review [phase]` | PR-style code review with multi-agent analysis |
-| `/gsd-refactor [desc]` | Safe refactoring with test snapshots + auto-rollback |
+| `/mertgsd-audit` | Full project audit — 6 agents in parallel |
+| `/mertgsd-review [phase]` | PR-style code review with multi-agent analysis |
+| `/mertgsd-refactor [desc]` | Safe refactoring with test snapshots + auto-rollback |
 
 ### Operations
 
 | Command | What it does |
 |---------|-------------|
-| `/gsd-deploy` | Build → deploy → verify (CF Pages / Vercel / Netlify) |
-| `/gsd-migrate [desc]` | DB migration with safety gates + rollback SQL |
-| `/gsd-setup-config` | Configure ntfy, deploy platform, Supabase, tests |
+| `/mertgsd-deploy` | Build → deploy → verify (CF Pages / Vercel / Netlify) |
+| `/mertgsd-migrate [desc]` | DB migration with safety gates + rollback SQL |
+| `/mertgsd-setup-config` | Configure ntfy, deploy platform, Supabase, tests |
 
 ### Utilities
 
 | Command | What it does |
 |---------|-------------|
-| `/gsd-quick [desc]` | Small ad-hoc task with GSD guarantees |
-| `/gsd-progress` | Current state, blockers, next steps |
-| `/gsd-commit-memory` | Distill context into long-term memory |
-| `/gsd-help` | Show all commands |
+| `/mertgsd-quick [desc]` | Small ad-hoc task with MertGSD guarantees |
+| `/mertgsd-progress` | Current state, blockers, next steps |
+| `/mertgsd-commit-memory` | Distill context into long-term memory |
+| `/mertgsd-help` | Show all commands |
+
+### Brownfield & Milestones
+
+| Command | What it does |
+|---------|-------------|
+| `/mertgsd-map-codebase` | Build a real codebase map before planning existing projects |
+| `/mertgsd-new-milestone` | Start the next milestone on an existing project |
+| `/mertgsd-audit-milestone` | Verify milestone-wide requirement coverage and integration |
+| `/mertgsd-complete-milestone` | Archive a shipped milestone and prepare the next cycle |
+| `/mertgsd-plan-milestone-gaps` | Turn milestone audit gaps into roadmap work |
+
+### Continuity & Maintenance
+
+| Command | What it does |
+|---------|-------------|
+| `/mertgsd-debug [issue]` | Start or resume a structured debug session |
+| `/mertgsd-pause-work` | Save a precise handoff for the next session |
+| `/mertgsd-resume-work` | Restore project context and route to the next step |
+| `/mertgsd-add-todo` | Capture follow-up work without losing context |
+| `/mertgsd-check-todos` | Review pending todos and route them into action |
+| `/mertgsd-health` | Validate `.planning/` integrity and repair safe issues |
+| `/mertgsd-update` | Update a MertGSD clone or explain reinstall path |
+| `/mertgsd-settings` | Inspect or update MertGSD project settings |
+| `/mertgsd-set-profile` | Set the preferred model profile |
+| `/mertgsd-research-phase` | Run standalone phase research before planning |
+| `/mertgsd-add-phase` | Append a new roadmap phase |
+| `/mertgsd-insert-phase` | Insert an urgent decimal phase |
+| `/mertgsd-remove-phase` | Remove an unstarted future phase |
+| `/mertgsd-add-tests` | Add or strengthen tests for an area or phase |
+| `/mertgsd-reapply-patches` | Reapply locally saved patch overlays after updates |
 
 ---
 
@@ -208,39 +238,39 @@ This is how most projects flow from idea to production:
 
 | Agent | What it does |
 |-------|-------------|
-| `gsd-executor` | Executes plans with atomic commits, deviation handling, checkpoints |
-| `gsd-planner` | Creates task plans with dependency analysis and wave ordering |
-| `gsd-roadmapper` | Creates phased project roadmaps from requirements |
-| `gsd-phase-researcher` | Researches implementation approach before planning |
-| `gsd-project-researcher` | Researches domain, stack, ecosystem before roadmap |
-| `gsd-research-synthesizer` | Merges parallel research outputs into actionable summaries |
+| `mertgsd-executor` | Executes plans with atomic commits, deviation handling, checkpoints |
+| `mertgsd-planner` | Creates task plans with dependency analysis and wave ordering |
+| `mertgsd-roadmapper` | Creates phased project roadmaps from requirements |
+| `mertgsd-phase-researcher` | Researches implementation approach before planning |
+| `mertgsd-project-researcher` | Researches domain, stack, ecosystem before roadmap |
+| `mertgsd-research-synthesizer` | Merges parallel research outputs into actionable summaries |
 
 ### Verification
 
 | Agent | What it does |
 |-------|-------------|
-| `gsd-verifier` | Goal-backward verification — did the code deliver what was promised? |
-| `gsd-plan-checker` | Pre-execution plan quality check |
-| `gsd-integration-checker` | Cross-phase integration and E2E flow verification |
-| `gsd-debugger` | Scientific method bug investigation with hypothesis testing |
-| `gsd-codebase-mapper` | Explores and documents codebase structure |
+| `mertgsd-verifier` | Goal-backward verification — did the code deliver what was promised? |
+| `mertgsd-plan-checker` | Pre-execution plan quality check |
+| `mertgsd-integration-checker` | Cross-phase integration and E2E flow verification |
+| `mertgsd-debugger` | Scientific method bug investigation with hypothesis testing |
+| `mertgsd-codebase-mapper` | Explores and documents codebase structure |
 
 ### Quality Auditors
 
 | Agent | What it does |
 |-------|-------------|
-| `gsd-security-auditor` | OWASP top 10, dependency audit, secrets detection, CSP |
-| `gsd-performance-tester` | Lighthouse, bundle size, lazy loading, render performance |
-| `gsd-mobile-auditor` | Responsive design, touch targets, viewport, overflow |
-| `gsd-seo-checker` | Metadata, sitemap, structured data, hreflang, headings |
-| `gsd-accessibility-tester` | WCAG 2.2 AA, ARIA, keyboard nav, contrast, focus |
-| `gsd-brand-reviewer` | Brand consistency, copy quality, design system, typography |
+| `mertgsd-security-auditor` | OWASP top 10, dependency audit, secrets detection, CSP |
+| `mertgsd-performance-tester` | Lighthouse, bundle size, lazy loading, render performance |
+| `mertgsd-mobile-auditor` | Responsive design, touch targets, viewport, overflow |
+| `mertgsd-seo-checker` | Metadata, sitemap, structured data, hreflang, headings |
+| `mertgsd-accessibility-tester` | WCAG 2.2 AA, ARIA, keyboard nav, contrast, focus |
+| `mertgsd-brand-reviewer` | Brand consistency, copy quality, design system, typography |
 
 ### Infrastructure
 
 | Agent | What it does |
 |-------|-------------|
-| `gsd-notifier` | Push notifications via ntfy.sh at milestones |
+| `mertgsd-notifier` | Push notifications via ntfy.sh at milestones |
 
 ---
 
@@ -263,7 +293,7 @@ The #1 problem with AI coding: it says it did something but didn't actually do i
 
 ## Push Notifications
 
-Configure during `/gsd-new-project` or `/gsd-setup-config`:
+Configure during `/mertgsd-new-project` or `/mertgsd-setup-config`:
 
 ```
 "Push bildirim almak ister misin?" → yes
@@ -286,22 +316,22 @@ Uses <a href="https://ntfy.sh" target="_blank" rel="noreferrer">ntfy.sh</a> — 
 your-project/
 ├── .agent/                          ← MertGSD system (copied by install)
 │   ├── agents/                      ← 18 specialized agents
-│   │   ├── gsd-executor.md
-│   │   ├── gsd-planner.md
-│   │   ├── gsd-security-auditor.md
+│   │   ├── mertgsd-executor.md
+│   │   ├── mertgsd-planner.md
+│   │   ├── mertgsd-security-auditor.md
 │   │   └── ... (18 total)
 │   └── workflows/                   ← 18 workflow orchestrators
-│       ├── gsd-new-project.md
-│       ├── gsd-super.md
-│       ├── gsd-audit.md
+│       ├── mertgsd-new-project.md
+│       ├── mertgsd-super.md
+│       ├── mertgsd-audit.md
 │       └── ... (18 total)
 │
-└── .planning/                       ← Project state (created by gsd-new-project)
+└── .planning/                       ← Project state (created by mertgsd-new-project)
     ├── PROJECT.md                   ← Vision and context
     ├── REQUIREMENTS.md              ← v1/v2 requirements
     ├── ROADMAP.md                   ← Phases and progress
     ├── STATE.md                     ← Current position (living memory)
-    ├── gsd-config.json              ← Settings (ntfy, deploy, tests)
+    ├── mertgsd-config.json              ← Settings (ntfy, deploy, tests)
     ├── research/                    ← Domain research
     └── phases/
         └── 01-phase-name/
