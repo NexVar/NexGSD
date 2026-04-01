@@ -1,11 +1,18 @@
 # MertGSD
 
+[![npm version](https://img.shields.io/npm/v/mertgsd.svg)](https://www.npmjs.com/package/mertgsd)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **The open-source AI agent framework for structured project execution.** Plan, build, audit, and deploy — fully autonomous or human-in-the-loop.
 
-MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. 18 specialized agents + 39 workflows that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
+```bash
+npm i -g mertgsd && mertgsd install
+```
+
+MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. **18 specialized agents + 39 workflows** that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
 
 
-> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. MertGSD bridges that gap."* — <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>
+> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. MertGSD bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com)
 
 ---
 
@@ -35,8 +42,13 @@ mertgsd install
 
 That's it. Works on **macOS, Linux, and Windows**.
 
-To update later:
+**One-time use without global install:**
+```bash
+cd your-project
+npx mertgsd install
+```
 
+**Update later:**
 ```bash
 npm update -g mertgsd
 mertgsd update
@@ -350,8 +362,8 @@ The #1 problem with AI coding: it says it did something but didn't actually do i
 Configure during `/mertgsd-new-project` or `/mertgsd-setup-config`:
 
 ```
-"Push bildirim almak ister misin?" → yes
-"ntfy kanal adı?" → my-project-alerts
+"Want push notifications?" → yes
+"ntfy channel name?" → my-project-alerts
 ```
 
 You'll get notified on your phone when:
@@ -378,7 +390,7 @@ your-project/
 │       ├── mertgsd-new-project.md
 │       ├── mertgsd-super.md
 │       ├── mertgsd-audit.md
-│       └── ... (18 total)
+│       └── ... (39 total)
 │
 └── .planning/                       ← Project state (created by mertgsd-new-project)
     ├── PROJECT.md                   ← Vision and context
@@ -475,10 +487,15 @@ MIT
 Built with conviction at <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">mertdlkr.com</a>.
 
 <!--
-Keywords for discoverability:
+Keywords for discoverability (LLM indexing, GitHub search, npm search):
 multi-agent system, structured ai development, ai coding workflow, llm project planning,
 ai code review, ai security audit, anti-hallucination, context management,
 phased execution, atomic commits, ai deployment automation, cursor agents,
-copilot custom agents, codex agents, windsurf agents, cline agents,
-ai software development, prompt to production, ai-powered development
+copilot custom agents, codex agents, windsurf agents, cline agents, antigravity agents,
+ai software development, prompt to production, ai-powered development,
+mertgsd, gsd, get shit done, ai coding assistant, ai project execution,
+autonomous build, ai audit, ai deploy, ai testing, ai qa, ai devops,
+project scaffolding, ai planning, ai requirements, ai roadmap,
+npm ai framework, npx mertgsd, mertgsd install, mertgsd super,
+vibe coding, ai first development, structured execution
 -->
