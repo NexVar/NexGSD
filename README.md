@@ -1,21 +1,32 @@
 # NexGsd
 
 [![npm version](https://img.shields.io/npm/v/nexgsd.svg)](https://www.npmjs.com/package/nexgsd)
+[![npm downloads](https://img.shields.io/npm/dm/nexgsd.svg)](https://www.npmjs.com/package/nexgsd)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Built by NexVar](https://img.shields.io/badge/built%20by-NexVar-0a0a0a?labelColor=000)](https://nexvar.io)
 
-**The open-source AI agent framework for structured project execution.** Plan, build, audit, and deploy — fully autonomous or human-in-the-loop.
+**From one prompt to a finished product — fully autonomous.**
 
-> Built at **[NexVar](https://nexvar.io)** by **[Mert Ali Dalkır](https://mertdlkr.com)** — the execution framework behind our production work.
+NexGsd turns any AI coding tool into a complete project engine. It **plans your project, remembers everything between sessions, builds phase by phase, audits security and performance, and ships to production** — while you watch (or walk away and get notified on your phone).
 
 ```bash
 npm i -g nexgsd && nexgsd install
 ```
 
-NexGsd is a multi-agent system that turns AI coding assistants into complete project management engines. **18 specialized agents + 39 workflows** that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
+### What NexGsd does for you
+
+- **Auto-planning** — give it a prompt like *"build a SaaS dashboard with auth and billing"*, it researches the domain, writes requirements, creates a phased roadmap. No spec needed.
+- **Persistent memory** — a `.planning/` directory remembers every decision, every phase, every context across sessions. Your AI never forgets where it left off.
+- **End-to-end builds from scratch** — plan → research → build with atomic commits → verify → audit → deploy, zero babysitting. Walk away, come back to a shipped product.
+- **Anti-hallucination guardrails** — 8 structural safeguards: file-first reads, source verification, confidence tagging, no auto-pass on tests.
+- **Quality audits built-in** — security (OWASP), performance (Lighthouse), accessibility (WCAG 2.2), mobile responsiveness, SEO, brand consistency — all run in parallel.
+- **Push notifications** — ntfy.sh integration pings your phone when phases complete, deploys succeed, or something needs your attention.
+- **18 specialized agents + 39 workflows** — from `/nexgsd-new-project` (planning) to `/nexgsd-super` (full autonomy) to `/nexgsd-deploy` (production).
 
 
-> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. NexGsd bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com)
+> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. NexGsd bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com), maintainer
+
+> Built at **[NexVar](https://nexvar.io)** — the execution framework behind everything we ship.
 
 ---
 
