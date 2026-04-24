@@ -2,7 +2,7 @@
 description: Save a precise handoff so work can resume cleanly in a later session
 ---
 
-# NexGsd Pause Work
+# NexGSD Pause Work
 
 Write a real handoff, not a vague note.
 

@@ -1,5 +1,5 @@
 <overview>
-Git integration for NexGsd framework.
+Git integration for NexGSD framework.
 </overview>
 
 <core_principle>
@@ -29,7 +29,7 @@ The git log should read like a changelog of what shipped, not a diary of plannin
 [ -d .git ] && echo "GIT_EXISTS" || echo "NO_GIT"
 ```
 
-If NO_GIT: Run `git init` silently. NexGsd projects always get their own repo.
+If NO_GIT: Run `git init` silently. NexGSD projects always get their own repo.
 </git_check>
 
 <commit_formats>

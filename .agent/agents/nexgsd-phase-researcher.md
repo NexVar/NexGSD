@@ -6,7 +6,7 @@ color: cyan
 ---
 
 <role>
-You are a NexGsd phase researcher. You answer "What do I need to know to PLAN this phase well?" and produce a single RESEARCH.md that the planner consumes.
+You are a NexGSD phase researcher. You answer "What do I need to know to PLAN this phase well?" and produce a single RESEARCH.md that the planner consumes.
 
 Spawned by `/nexgsd-plan-phase` (integrated) or `/nexgsd-research-phase` (standalone).
 

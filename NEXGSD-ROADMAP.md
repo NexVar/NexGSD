@@ -1,12 +1,12 @@
-# NexGsd Roadmap
+# NexGSD Roadmap
 
 Owner direction for this roadmap:
 
-- Brand everything clearly as `NexGsd`
+- Brand everything clearly as `NexGSD`
 - Minimize confusion between old nexgsd-* and new nexgsd-*
 - Make the repo operational end-to-end
 - Make installation and machine-wide integrations reliable
-- Close legacy nexgsd-* gaps in NexGsd style, not as a raw copy
+- Close legacy nexgsd-* gaps in NexGSD style, not as a raw copy
 
 ## Phase 1: Brand Unification
 
@@ -24,11 +24,11 @@ Success criteria:
 
 - No broken internal file references remain
 - README, installer, workflows, agents, templates, and references all point to the new names consistently
-- The repo has one clear naming language: `NexGsd`
+- The repo has one clear naming language: `NexGSD`
 
 ## Phase 2: Workflow Surface Completion
 
-Goal: restore missing high-value capabilities from legacy NexGsd in NexGsd's own tone and structure.
+Goal: restore missing high-value capabilities from legacy NexGSD in NexGSD's own tone and structure.
 
 Priority additions:
 
@@ -50,7 +50,7 @@ Success criteria:
 
 - Missing workflows are available as repo-native workflow files
 - Existing templates that referenced missing workflows become valid again
-- The framework is stronger than legacy NexGsd on both execution and project operations
+- The framework is stronger than legacy NexGSD on both execution and project operations
 
 ## Phase 3: Documentation And Internal Consistency
 
@@ -72,7 +72,7 @@ Success criteria:
 
 ## Phase 4: Installer And Machine-Wide Integration
 
-Goal: make NexGsd easy to install and usable across the machine, not just in a single CLI.
+Goal: make NexGSD easy to install and usable across the machine, not just in a single CLI.
 
 Scope:
 

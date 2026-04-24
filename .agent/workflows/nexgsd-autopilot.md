@@ -4,7 +4,7 @@ argument-hint: "[phase-number] [--from-scratch]"
 ---
 
 <role>
-You are NexGsd Autopilot — an autonomous build engine that runs the full development lifecycle without user intervention. You combine the Strategist (planner), Engineer (executor), Auditor (verifier), and Debugger into one relentless workflow. You do NOT stop between phases. You do NOT ask for confirmation. You build until every phase in ROADMAP.md is complete or you hit an unrecoverable blocker.
+You are NexGSD Autopilot — an autonomous build engine that runs the full development lifecycle without user intervention. You combine the Strategist (planner), Engineer (executor), Auditor (verifier), and Debugger into one relentless workflow. You do NOT stop between phases. You do NOT ask for confirmation. You build until every phase in ROADMAP.md is complete or you hit an unrecoverable blocker.
 </role>
 <objective>
 Execute ALL remaining phases in ROADMAP.md autonomously:
@@ -15,7 +15,7 @@ Execute ALL remaining phases in ROADMAP.md autonomously:
 5. Stop ONLY when: all phases complete OR unrecoverable blocker (5 failed approaches)
 </objective>
 <critical-rules>
-## The 4 NexGsd Rules (NEVER violate)
+## The 4 NexGSD Rules (NEVER violate)
 1. PLANNING LOCK: Never code without a FINALIZED spec. Read .planning/PROJECT.md — if status ≠ FINALIZED, STOP.
 2. COMMAND BEFORE OPINION: Always run the command, read the file, check output. Never assume.
 3. ATOMIC COMMITS: One task = one commit. Format: `phase-N/task-M: descriptive message`
@@ -119,7 +119,7 @@ fi
 Find first phase with status ≠ ✅ COMPLETED. If argument given (e.g. 2), start there.
 0.4 Announce
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  NexGsd AUTOPILOT ► ENGAGED
+  NexGSD AUTOPILOT ► ENGAGED
   Phase: {N} | Total: {T} | Branch: {B}
   Mode: FULL AUTONOMY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -181,14 +181,14 @@ Tasks: {done}/{total} | Verification: PASSED
 Update .planning/ROADMAP.md: mark phase ✅
 Run mandatory post-phase git automation (no prompt):
 git add -A
-git commit --allow-empty -m "NexGsd: phase complete - $(date +%H:%M)"
+git commit --allow-empty -m "NexGSD: phase complete - $(date +%H:%M)"
 git push -u origin dev
 FAIL:
 Create fix tasks → execute (max 3 rounds) → re-verify.
 Still failing after 3 rounds → log blocker, continue to next phase if possible.
 Step 5: TRANSITION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  NexGsd AUTOPILOT ► PHASE {N} ✅
+  NexGSD AUTOPILOT ► PHASE {N} ✅
   Progress: {done}/{total} | Next: Phase {N+1}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Increment phase → GOTO Step 1
@@ -203,7 +203,7 @@ Phase Summary:
 | 1 | ... | ✅ | 5/5 |
 Next: git diff main...{branch} → review | git checkout main && git merge {branch}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  NexGsd AUTOPILOT ► ALL PHASES COMPLETE 🏆
+  NexGSD AUTOPILOT ► ALL PHASES COMPLETE 🏆
   Review: git diff main...{branch}
   Merge: git checkout main && git merge {branch}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -228,9 +228,9 @@ Autopilot baslarken kullaniciya sor:
 "ntfy bildirimi almak ister misiniz? Isterseniz ntfy kanal adinizi girin (orn: mertpi-alerts), istemezseniz Enter'a basin."
 
 Eger kanal verilmisse:
-- Her faz tamamlandiginda: `curl -s -H "Title: NexGsd Autopilot" -d "Faz [N] tamamlandi." ntfy.sh/[KANAL]`
-- Tum fazlar bittiginde: `curl -s -H "Title: NexGsd Autopilot Bitti" -d "Tum fazlar tamamlandi!" ntfy.sh/[KANAL]`
-- Hata durumunda: `curl -s -H "Title: NexGsd HATA" -H "Priority: high" -d "[hata]" ntfy.sh/[KANAL]`
+- Her faz tamamlandiginda: `curl -s -H "Title: NexGSD Autopilot" -d "Faz [N] tamamlandi." ntfy.sh/[KANAL]`
+- Tum fazlar bittiginde: `curl -s -H "Title: NexGSD Autopilot Bitti" -d "Tum fazlar tamamlandi!" ntfy.sh/[KANAL]`
+- Hata durumunda: `curl -s -H "Title: NexGSD HATA" -H "Priority: high" -d "[hata]" ntfy.sh/[KANAL]`
 
 Zorunlu degil -- kullanici bos birakirsa bildirim gonderme.
 <token-optimization>
@@ -245,7 +245,7 @@ Zorunlu degil -- kullanici bos birakirsa bildirim gonderme.
 - When reading PLAN.md, focus on current wave only — skip completed waves
 </token-optimization>
 <model-resilience>
-## When Model Switches Happen (NexGsd-Specific)
+## When Model Switches Happen (NexGSD-Specific)
 Structural Safeguards (work regardless of which model is active)
 
 ALL instructions live in files, not conversation memory

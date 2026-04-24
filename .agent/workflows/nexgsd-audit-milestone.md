@@ -2,7 +2,7 @@
 description: Aggregate phase verification and cross-phase integration results for a full milestone verdict
 ---
 
-# NexGsd Audit Milestone
+# NexGSD Audit Milestone
 
 Audit the milestone as a whole.
 

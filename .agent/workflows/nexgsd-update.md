@@ -1,16 +1,16 @@
 ---
-description: Update a NexGsd clone or explain how to refresh copied project installs
+description: Update a NexGSD clone or explain how to refresh copied project installs
 ---
 
-# NexGsd Update
+# NexGSD Update
 
-Update NexGsd safely.
+Update NexGSD safely.
 
 ## Intent
 
 There are two real install modes:
 
-1. A git clone of the NexGsd repo
+1. A git clone of the NexGSD repo
 2. A project-local copied `.agent/` install created by `nexgsd-install`
 
 Detect which one you are in before acting.
@@ -31,8 +31,8 @@ Do not pretend git update is possible.
 
 Instead:
 
-1. Tell the user this project contains a copied NexGsd install.
-2. Ask where the canonical NexGsd repo lives.
+1. Tell the user this project contains a copied NexGSD install.
+2. Ask where the canonical NexGSD repo lives.
 3. Instruct or perform:
    - update the source repo
    - rerun `nexgsd-install`

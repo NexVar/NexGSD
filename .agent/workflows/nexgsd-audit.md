@@ -2,7 +2,7 @@
 description: Full project audit spawning parallel agents for security, performance, mobile, SEO, accessibility, and brand
 ---
 
-# NexGsd Audit — Full Project Audit with Parallel Agents
+# NexGSD Audit — Full Project Audit with Parallel Agents
 
 Run a comprehensive project audit by spawning multiple specialist agents in parallel. Covers security, performance, mobile, SEO, accessibility, and brand consistency. Collects all reports into a unified AUDIT.md with prioritized findings and action items.
 
@@ -41,7 +41,7 @@ Be thorough. Be honest. Cite evidence.
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/`:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Run /nexgsd-new-project first."
 
 Determine audit scope:
 ```bash
@@ -58,7 +58,7 @@ ls package.json tsconfig.json next.config.* nuxt.config.* vite.config.* 2>/dev/n
 Display:
 ```
 +--------------------------------------------------+
-| NexGsd > FULL PROJECT AUDIT                         |
+| NexGSD > FULL PROJECT AUDIT                         |
 +--------------------------------------------------+
 
 Project:    [name from ROADMAP.md]
@@ -160,7 +160,7 @@ Create `.planning/AUDIT.md`:
 **Date:** [date]
 **Project:** [name from ROADMAP.md]
 **Phase:** [current phase]
-**Audited by:** NexGsd Automated Audit
+**Audited by:** NexGSD Automated Audit
 
 ## Executive Summary
 
@@ -282,7 +282,7 @@ git commit -m "docs: update STATE.md with audit results"
 **If no critical issues:**
 ```
 +--------------------------------------------------+
-| NexGsd > AUDIT COMPLETE                             |
+| NexGSD > AUDIT COMPLETE                             |
 +--------------------------------------------------+
 
 Project:  [name]
@@ -308,7 +308,7 @@ Action items: [total count] (see AUDIT.md)
 **If critical issues found:**
 ```
 +--------------------------------------------------+
-| NexGsd > AUDIT COMPLETE -- CRITICAL ISSUES FOUND    |
+| NexGSD > AUDIT COMPLETE -- CRITICAL ISSUES FOUND    |
 +--------------------------------------------------+
 
 !! [count] CRITICAL ISSUES REQUIRE IMMEDIATE ATTENTION !!

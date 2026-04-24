@@ -2,7 +2,7 @@
 description: Insert an urgent decimal phase between existing phases
 ---
 
-# NexGsd Insert Phase
+# NexGSD Insert Phase
 
 Insert urgent work without destroying roadmap order.
 

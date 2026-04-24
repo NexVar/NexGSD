@@ -140,7 +140,7 @@ read file → understand patterns → apply changes matching style
 NEVER write changes "from memory" of what the file looks like.
 ```
 
-## Implementation in NexGsd Workflows
+## Implementation in NexGSD Workflows
 
 ### In /nexgsd-plan (Plan Creation)
 

@@ -2,7 +2,7 @@
 description: Capture implementation decisions before planning a phase
 ---
 
-# NexGsd Discuss — Capture Implementation Preferences
+# NexGSD Discuss — Capture Implementation Preferences
 
 Extract implementation decisions that inform planning. You are a thinking partner — the user is the visionary, you are the builder. Capture decisions that will guide research and planning.
 
@@ -38,7 +38,7 @@ DECISION CAPTURE RULES:
 
 **Actually read** (not recall) `.planning/ROADMAP.md` to find the specified phase.
 
-**If no `.planning/` directory:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/` directory:** "No NexGSD project found. Run /nexgsd-new-project first."
 
 **If phase not found in roadmap:** "Phase [N] not found in roadmap. Available phases: [list]"
 
@@ -160,7 +160,7 @@ git commit -m "docs([NN]): capture phase context"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► CONTEXT CAPTURED ✓
+ NexGSD ► CONTEXT CAPTURED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Phase [N]: [Name] — [Count] decisions captured

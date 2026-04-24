@@ -2,7 +2,7 @@
 description: Start a new milestone for an existing project and define the next requirement set
 ---
 
-# NexGsd New Milestone
+# NexGSD New Milestone
 
 Brownfield equivalent of `/nexgsd-new-project`.
 

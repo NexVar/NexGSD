@@ -1,8 +1,8 @@
 ---
-description: Reapply locally saved NexGsd patch files after an update or reinstall
+description: Reapply locally saved NexGSD patch files after an update or reinstall
 ---
 
-# NexGsd Reapply Patches
+# NexGSD Reapply Patches
 
 Use this only if local patch backups exist.
 

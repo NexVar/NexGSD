@@ -1,7 +1,7 @@
 {
   "name": "nexgsd",
-  "version": "1.4.2",
-  "description": "From one prompt to a finished product — fully autonomous. NexGsd turns any AI coding tool into a complete project engine: auto-plans, remembers across sessions, builds end-to-end, audits security & performance, deploys to production. 18 agents + 39 workflows. Built by NexVar. https://github.com/NexVar/NexGsd",
+  "version": "1.4.3",
+  "description": "From one prompt to a finished product — fully autonomous. NexGSD turns any AI coding tool into a complete project engine: auto-plans, remembers across sessions, builds end-to-end, audits security & performance, deploys to production. 18 agents + 39 workflows. Built by NexVar. https://github.com/NexVar/NexGSD",
   "bin": {
     "nexgsd": "./bin/nexgsd.js"
   },
@@ -39,11 +39,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NexVar/NexGsd.git"
+    "url": "https://github.com/NexVar/NexGSD.git"
   },
-  "homepage": "https://github.com/NexVar/NexGsd",
+  "homepage": "https://github.com/NexVar/NexGSD",
   "bugs": {
-    "url": "https://github.com/NexVar/NexGsd/issues"
+    "url": "https://github.com/NexVar/NexGSD/issues"
   },
   "engines": {
     "node": ">=16.0.0"

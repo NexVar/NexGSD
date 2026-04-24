@@ -2,7 +2,7 @@
 description: PR-style code review of changes with quality, security, performance, and brand checks
 ---
 
-# NexGsd Review — Code Review with Multi-Agent Analysis
+# NexGSD Review — Code Review with Multi-Agent Analysis
 
 PR-style code review of changes since the last phase or commit range. Analyzes code quality, security, performance, and brand consistency. Spawns specialist agents as needed and produces a REVIEW.md with a verdict.
 
@@ -41,7 +41,7 @@ When in doubt, request changes.
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/`:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Run /nexgsd-new-project first."
 
 Determine the review scope based on arguments:
 
@@ -66,7 +66,7 @@ git diff [range]
 **No argument -- auto-detect:**
 ```bash
 # Find last review or phase completion
-git log --oneline -1 --grep="review:" --grep="NexGsd: phase complete" --all
+git log --oneline -1 --grep="review:" --grep="NexGSD: phase complete" --all
 # Diff from that point to HEAD
 git diff [last-review-hash]..HEAD
 ```
@@ -74,7 +74,7 @@ git diff [last-review-hash]..HEAD
 Display:
 ```
 +--------------------------------------------------+
-| NexGsd > CODE REVIEW                                |
+| NexGSD > CODE REVIEW                                |
 +--------------------------------------------------+
 
 Scope:    [Phase N / Files / Commit Range]
@@ -167,7 +167,7 @@ Create `.planning/REVIEW.md` (overwrite if exists):
 **Date:** [date]
 **Scope:** [Phase N / Files / Commit Range]
 **Verdict:** APPROVE | REQUEST CHANGES | BLOCK
-**Reviewer:** NexGsd Automated Review
+**Reviewer:** NexGSD Automated Review
 
 ## Summary
 
@@ -253,7 +253,7 @@ git commit -m "docs: update STATE.md with review results"
 **If APPROVE:**
 ```
 +--------------------------------------------------+
-| NexGsd > REVIEW COMPLETE -- APPROVED                |
+| NexGSD > REVIEW COMPLETE -- APPROVED                |
 +--------------------------------------------------+
 
 Scope:   [scope]
@@ -271,7 +271,7 @@ Review saved: .planning/REVIEW.md
 **If REQUEST CHANGES:**
 ```
 +--------------------------------------------------+
-| NexGsd > REVIEW COMPLETE -- CHANGES REQUESTED       |
+| NexGSD > REVIEW COMPLETE -- CHANGES REQUESTED       |
 +--------------------------------------------------+
 
 Scope:   [scope]
@@ -287,7 +287,7 @@ Fix the issues and run /nexgsd-review again.
 **If BLOCK:**
 ```
 +--------------------------------------------------+
-| NexGsd > REVIEW COMPLETE -- BLOCKED                 |
+| NexGSD > REVIEW COMPLETE -- BLOCKED                 |
 +--------------------------------------------------+
 
 Scope:   [scope]

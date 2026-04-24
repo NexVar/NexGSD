@@ -2,7 +2,7 @@
 description: Research and create executable task plans for a phase
 ---
 
-# NexGsd Plan — Research + Plan + Verify
+# NexGSD Plan — Research + Plan + Verify
 
 Create executable task plans for a roadmap phase. Default flow: Research (if enabled) → Plan → Verify → Done.
 
@@ -43,7 +43,7 @@ CONFIDENCE LEVELS (assign to every technical claim):
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/` directory:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/` directory:** "No NexGSD project found. Run /nexgsd-new-project first."
 **If phase not found:** "Phase [N] not found. Available phases: [list]"
 
 Check for existing artifacts:
@@ -70,7 +70,7 @@ Check `.planning/config.json` for `workflow.research` setting. If research is en
 Display:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► RESEARCHING PHASE [N]
+ NexGSD ► RESEARCHING PHASE [N]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -125,7 +125,7 @@ Write research findings to `.planning/phases/[NN]-[slug]/[NN]-RESEARCH.md`:
 Display:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► PLANNING PHASE [N]
+ NexGSD ► PLANNING PHASE [N]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -217,7 +217,7 @@ Check `.planning/config.json` for `workflow.verification` setting. If verificati
 Display:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► VERIFYING PLANS
+ NexGSD ► VERIFYING PLANS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -249,7 +249,7 @@ Update `.planning/STATE.md`:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► PHASE [N] PLANNED ✓
+ NexGSD ► PHASE [N] PLANNED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Phase [N]: [Name] — [P] plan(s)

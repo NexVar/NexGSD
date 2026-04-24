@@ -2,7 +2,7 @@
 description: Remove a future roadmap phase safely
 ---
 
-# NexGsd Remove Phase
+# NexGSD Remove Phase
 
 Remove only unstarted future phases.
 

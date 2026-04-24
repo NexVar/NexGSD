@@ -1,8 +1,8 @@
 ---
-description: Initialize a new NexGsd project with questions, research, requirements, and roadmap
+description: Initialize a new NexGSD project with questions, research, requirements, and roadmap
 ---
 
-# NexGsd New Project — Full Initialization
+# NexGSD New Project — Full Initialization
 
 Initialize a new project through a structured flow: questioning → research → requirements → roadmap. This is the most leveraged moment — deep questioning here means better plans, better execution, better outcomes.
 
@@ -32,7 +32,7 @@ Check if `.planning/` directory exists.
 
 **If it exists and contains `PROJECT.md`:**
 ```
-A NexGsd project already exists in this directory.
+A NexGSD project already exists in this directory.
 Run /nexgsd-progress to see current status.
 ```
 Ask the user if they want to reinitialize (this will overwrite existing planning files) or continue with the existing project.
@@ -335,7 +335,7 @@ Ask the user these questions:
 "Push bildirim almak ister misin? Fazlar tamamlandığında, deploy olduğunda veya hata çıktığında bildirim alırsın. (ntfy.sh kullanılır)"
 
 If yes: "ntfy kanal adı ne olsun? (örn: mertpi-alerts, proje-adi-alerts)"
-Send test: `curl -s -d "NexGsd: ${PROJECT_NAME} projesi baslatildi!" ntfy.sh/${TOPIC}`
+Send test: `curl -s -d "NexGSD: ${PROJECT_NAME} projesi baslatildi!" ntfy.sh/${TOPIC}`
 
 **2. Deploy:**
 "Deploy platformu var mı?" → cloudflare-pages / vercel / netlify / none
@@ -359,7 +359,7 @@ git commit -m "docs: project configuration"
 Display:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► PROJECT INITIALIZED ✓
+ NexGSD ► PROJECT INITIALIZED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Project: [Name]
@@ -382,6 +382,6 @@ This prevents initialization context from contaminating planning.
 ```bash
 NTFY_TOPIC=$(cat .planning/nexgsd-config.json 2>/dev/null | grep -o '"ntfy_topic":"[^"]*"' | cut -d'"' -f4)
 if [ -n "$NTFY_TOPIC" ]; then
-  curl -s -H "Title: NexGsd Proje Baslatildi" -d "${PROJECT_NAME}: ${PHASE_COUNT} faz planlanadi. Hazir!" ntfy.sh/$NTFY_TOPIC
+  curl -s -H "Title: NexGSD Proje Baslatildi" -d "${PROJECT_NAME}: ${PHASE_COUNT} faz planlanadi. Hazir!" ntfy.sh/$NTFY_TOPIC
 fi
 ```

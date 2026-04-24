@@ -1,8 +1,8 @@
 ---
-description: Inspect or update project-level NexGsd settings
+description: Inspect or update project-level NexGSD settings
 ---
 
-# NexGsd Settings
+# NexGSD Settings
 
 Read and explain `.planning/nexgsd-config.json`.
 

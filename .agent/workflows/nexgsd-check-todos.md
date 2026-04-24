@@ -2,7 +2,7 @@
 description: Review pending todos, inspect one in full, and decide what to do next
 ---
 
-# NexGsd Check Todos
+# NexGSD Check Todos
 
 List pending todos and route them into action.
 

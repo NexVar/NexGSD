@@ -1,4 +1,4 @@
-# NexGsd
+# NexGSD
 
 [![npm version](https://img.shields.io/npm/v/nexgsd.svg)](https://www.npmjs.com/package/nexgsd)
 [![npm downloads](https://img.shields.io/npm/dm/nexgsd.svg)](https://www.npmjs.com/package/nexgsd)
@@ -7,13 +7,13 @@
 
 **From one prompt to a finished product — fully autonomous.**
 
-NexGsd turns any AI coding tool into a complete project engine. It **plans your project, remembers everything between sessions, builds phase by phase, audits security and performance, and ships to production** — while you watch (or walk away and get notified on your phone).
+NexGSD turns any AI coding tool into a complete project engine. It **plans your project, remembers everything between sessions, builds phase by phase, audits security and performance, and ships to production** — while you watch (or walk away and get notified on your phone).
 
 ```bash
 npm i -g nexgsd && nexgsd install
 ```
 
-### What NexGsd does for you
+### What NexGSD does for you
 
 - **Auto-planning** — give it a prompt like *"build a SaaS dashboard with auth and billing"*, it researches the domain, writes requirements, creates a phased roadmap. No spec needed.
 - **Persistent memory** — a `.planning/` directory remembers every decision, every phase, every context across sessions. Your AI never forgets where it left off.
@@ -24,17 +24,17 @@ npm i -g nexgsd && nexgsd install
 - **18 specialized agents + 39 workflows** — from `/nexgsd-new-project` (planning) to `/nexgsd-super` (full autonomy) to `/nexgsd-deploy` (production).
 
 
-> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. NexGsd bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com), maintainer
+> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. NexGSD bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com), maintainer
 
 > Built at **[NexVar](https://nexvar.io)** — the execution framework behind everything we ship.
 
 ---
 
-## Why NexGsd?
+## Why NexGSD?
 
 **The problem:** AI coding assistants write code fast but lose context between sessions, hallucinate project state, skip testing, forget to audit security, and can't manage multi-phase projects.
 
-**The solution:** NexGsd adds a structured execution layer on top of any AI coding tool:
+**The solution:** NexGSD adds a structured execution layer on top of any AI coding tool:
 
 - **Context management** — `.planning/` directory persists project state across sessions
 - **Anti-hallucination** — every claim verified against real files and real command output
@@ -74,21 +74,21 @@ nexgsd update
 <summary>Click to expand</summary>
 
 ```bash
-git clone https://github.com/NexVar/NexGsd.git
+git clone https://github.com/NexVar/NexGSD.git
 ```
 
 **macOS / Linux / WSL:**
 ```bash
-bash NexGsd/nexgsd-install.sh /path/to/your-project
+bash NexGSD/nexgsd-install.sh /path/to/your-project
 ```
 
 **Windows (PowerShell):**
 ```powershell
 # Use Git Bash
-bash NexGsd/nexgsd-install.sh C:/Users/you/your-project
+bash NexGSD/nexgsd-install.sh C:/Users/you/your-project
 
 # Or manual copy
-Copy-Item -Recurse NexGsd/.agent your-project/.agent
+Copy-Item -Recurse NexGSD/.agent your-project/.agent
 ```
 
 </details>
@@ -123,7 +123,7 @@ After planning, run this to execute the entire project autonomously — plan, bu
 ### CLI Commands
 
 ```bash
-nexgsd install [path]   # Install NexGsd to a project
+nexgsd install [path]   # Install NexGSD to a project
 nexgsd update [path]    # Update to latest version
 nexgsd info             # Show agent/workflow counts
 nexgsd --version        # Show version
@@ -157,7 +157,7 @@ copilot "Read .agent/workflows/nexgsd-new-project.md and follow the workflow to 
 codex "Follow the workflow in .agent/workflows/nexgsd-super.md to build: [your prompt]"
 ```
 
-Add a `.github/copilot-instructions.md` referencing NexGsd:
+Add a `.github/copilot-instructions.md` referencing NexGSD:
 ```markdown
 When I say /nexgsd-[command], read and follow .agent/workflows/nexgsd-[command].md
 Available agents are in .agent/agents/
@@ -165,7 +165,7 @@ Available agents are in .agent/agents/
 
 ### Cursor / Windsurf / Cline / VS Code (IDE Agents)
 
-1. Install NexGsd to your project: `./nexgsd-install.sh .`
+1. Install NexGSD to your project: `./nexgsd-install.sh .`
 2. Open your project in the IDE
 3. Reference workflows in chat:
    - "Follow .agent/workflows/nexgsd-new-project.md to set up this project"
@@ -174,7 +174,7 @@ Available agents are in .agent/agents/
 
 ### Any LLM / Custom Setup
 
-NexGsd agents and workflows are plain Markdown files. Any LLM that can read files and execute commands can use them:
+NexGSD agents and workflows are plain Markdown files. Any LLM that can read files and execute commands can use them:
 
 ```
 System prompt: "You have access to a project management framework in .agent/.
@@ -184,7 +184,7 @@ a workflow, read and follow the corresponding .md file step by step."
 
 ---
 
-## Default Workflow (The NexGsd Loop)
+## Default Workflow (The NexGSD Loop)
 
 This is how most projects flow from idea to production:
 
@@ -275,7 +275,7 @@ This is how most projects flow from idea to production:
 
 | Command | What it does |
 |---------|-------------|
-| `/nexgsd-quick [desc]` | Small ad-hoc task with NexGsd guarantees |
+| `/nexgsd-quick [desc]` | Small ad-hoc task with NexGSD guarantees |
 | `/nexgsd-progress` | Current state, blockers, next steps |
 | `/nexgsd-commit-memory` | Distill context into long-term memory |
 | `/nexgsd-help` | Show all commands |
@@ -300,8 +300,8 @@ This is how most projects flow from idea to production:
 | `/nexgsd-add-todo` | Capture follow-up work without losing context |
 | `/nexgsd-check-todos` | Review pending todos and route them into action |
 | `/nexgsd-health` | Validate `.planning/` integrity and repair safe issues |
-| `/nexgsd-update` | Update a NexGsd clone or explain reinstall path |
-| `/nexgsd-settings` | Inspect or update NexGsd project settings |
+| `/nexgsd-update` | Update a NexGSD clone or explain reinstall path |
+| `/nexgsd-settings` | Inspect or update NexGSD project settings |
 | `/nexgsd-set-profile` | Set the preferred model profile |
 | `/nexgsd-research-phase` | Run standalone phase research before planning |
 | `/nexgsd-add-phase` | Append a new roadmap phase |
@@ -356,7 +356,7 @@ This is how most projects flow from idea to production:
 
 ## Anti-Hallucination System
 
-The #1 problem with AI coding: it says it did something but didn't actually do it. NexGsd has 8 structural safeguards:
+The #1 problem with AI coding: it says it did something but didn't actually do it. NexGSD has 8 structural safeguards:
 
 | Protection | How |
 |------------|-----|
@@ -394,7 +394,7 @@ Uses <a href="https://ntfy.sh" target="_blank" rel="noreferrer">ntfy.sh</a> — 
 
 ```
 your-project/
-├── .agent/                          ← NexGsd system (copied by install)
+├── .agent/                          ← NexGSD system (copied by install)
 │   ├── agents/                      ← 18 specialized agents
 │   │   ├── nexgsd-executor.md
 │   │   ├── nexgsd-planner.md
@@ -455,7 +455,7 @@ Every agent and workflow exists because it was needed during real development. R
 
 ## Model Compatibility
 
-NexGsd works with any LLM:
+NexGSD works with any LLM:
 
 | Model | Status |
 |-------|--------|
@@ -477,7 +477,7 @@ PRs welcome. If you add a new agent or workflow, follow the existing format in `
 
 ### <a href="https://nexvar.io" target="_blank" rel="noreferrer">NexVar</a>
 
-AI-first software studio shipping production tooling, AI platforms, and developer infrastructure. NexGsd is the execution framework we use internally on every project we ship.
+AI-first software studio shipping production tooling, AI platforms, and developer infrastructure. NexGSD is the execution framework we use internally on every project we ship.
 
 <a href="https://nexvar.io" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/nexvar.io-000?style=flat&amp;logo=safari&amp;logoColor=white" alt="Website"></a>
 <a href="https://github.com/NexVar" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/NexVar-181717?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
@@ -503,7 +503,7 @@ MIT © <a href="https://nexvar.io" target="_blank" rel="noreferrer">NexVar</a> a
 
 ---
 
-**If NexGsd saves you time, give it a star.** It helps others find it.
+**If NexGSD saves you time, give it a star.** It helps others find it.
 
 Built with conviction at <a href="https://nexvar.io" target="_blank" rel="noreferrer">nexvar.io</a> and <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">mertdlkr.com</a>.
 

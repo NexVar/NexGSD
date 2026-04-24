@@ -1,8 +1,8 @@
 ---
-description: Set the preferred model profile in NexGsd project settings
+description: Set the preferred model profile in NexGSD project settings
 ---
 
-# NexGsd Set Profile
+# NexGSD Set Profile
 
 Store the preferred profile in `.planning/nexgsd-config.json`.
 

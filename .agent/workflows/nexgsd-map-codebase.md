@@ -1,8 +1,8 @@
 ---
-description: Map an existing codebase into structured NexGsd reference docs
+description: Map an existing codebase into structured NexGSD reference docs
 ---
 
-# NexGsd Map Codebase
+# NexGSD Map Codebase
 
 Create `.planning/codebase/` so future planning and execution use real codebase context instead of guesses.
 
@@ -33,7 +33,7 @@ Optional scope filter: `/nexgsd-map-codebase`, `/nexgsd-map-codebase src/`
 
 ## Output Standard
 
-Each file should help future NexGsd planning answer:
+Each file should help future NexGSD planning answer:
 
 - what exists
 - where it lives

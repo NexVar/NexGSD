@@ -1,8 +1,8 @@
 ---
-description: Capture an idea, bug, or follow-up into a structured NexGsd todo file
+description: Capture an idea, bug, or follow-up into a structured NexGSD todo file
 ---
 
-# NexGsd Add Todo
+# NexGSD Add Todo
 
 Store future work without losing context.
 

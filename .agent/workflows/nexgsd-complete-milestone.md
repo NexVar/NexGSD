@@ -2,7 +2,7 @@
 description: Archive a shipped milestone, update project state, and prepare the next cycle
 ---
 
-# NexGsd Complete Milestone
+# NexGSD Complete Milestone
 
 Close a milestone with a real archive, not a vague status flip.
 

@@ -2,7 +2,7 @@
 description: Restore project context and route to the most sensible next action
 ---
 
-# NexGsd Resume Work
+# NexGSD Resume Work
 
 Restore context fast.
 

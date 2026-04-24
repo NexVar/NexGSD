@@ -2,7 +2,7 @@
 description: Database migration workflow with backup plan, rollback SQL, and confirmation gates
 ---
 
-# NexGsd Migrate — Database Migration with Safety Gates
+# NexGSD Migrate — Database Migration with Safety Gates
 
 Plan and execute database migrations safely. Analyzes the current schema, creates migration SQL with rollback, tests the migration, and applies it with explicit user confirmation before any destructive changes.
 
@@ -42,7 +42,7 @@ Destructive operations (DROP, DELETE, TRUNCATE) require explicit user approval.
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/`:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Run /nexgsd-new-project first."
 
 ### 2. Detect Database Tool
 
@@ -76,7 +76,7 @@ grep -E "(prisma|drizzle|supabase|knex|typeorm|sequelize)" package.json 2>/dev/n
 Display:
 ```
 +--------------------------------------------------+
-| NexGsd > DATABASE MIGRATION                         |
+| NexGSD > DATABASE MIGRATION                         |
 +--------------------------------------------------+
 
 Migration: [description]
@@ -395,7 +395,7 @@ git commit -m "migrate: [description]"
 **If migration succeeded:**
 ```
 +--------------------------------------------------+
-| NexGsd > MIGRATION COMPLETE                         |
+| NexGSD > MIGRATION COMPLETE                         |
 +--------------------------------------------------+
 
 Migration: [description]
@@ -413,7 +413,7 @@ Summary: .planning/MIGRATION-[date].md
 **If migration failed:**
 ```
 +--------------------------------------------------+
-| NexGsd > MIGRATION FAILED                           |
+| NexGSD > MIGRATION FAILED                           |
 +--------------------------------------------------+
 
 Migration: [description]

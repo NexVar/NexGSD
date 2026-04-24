@@ -2,7 +2,7 @@
 description: Start or resume a structured debug session with persistent state
 ---
 
-# NexGsd Debug
+# NexGSD Debug
 
 Use `nexgsd-debugger` for scientific debugging instead of ad-hoc guessing.
 

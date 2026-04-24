@@ -2,9 +2,9 @@
 
 ## Overview
 
-Super Mode (`/nexgsd-super`) is NexGsd's fully autonomous execution mode. This reference documents the algorithms, protocols, and safety mechanisms that make autonomous operation reliable.
+Super Mode (`/nexgsd-super`) is NexGSD's fully autonomous execution mode. This reference documents the algorithms, protocols, and safety mechanisms that make autonomous operation reliable.
 
-> **This is a 🆕 NexGsd invention.** Not found in any other AI coding tool.
+> **This is a 🆕 NexGSD invention.** Not found in any other AI coding tool.
 
 ---
 
@@ -357,7 +357,7 @@ RULES:
 This file is created during the interview and referenced throughout execution:
 
 ```markdown
-# NexGsd Super Configuration
+# NexGSD Super Configuration
 
 ## Project
 - **Name**: [from PRD/prompt]
@@ -402,7 +402,7 @@ This file is created during the interview and referenced throughout execution:
 Updated after every task during execution:
 
 ```markdown
-# NexGsd Super Progress
+# NexGSD Super Progress
 
 ## Overall
 - **Status**: [IN PROGRESS / COMPLETE / STUCK]

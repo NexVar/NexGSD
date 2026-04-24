@@ -29,11 +29,11 @@ const LINE = `${c.dim}${'━'.repeat(COLS)}${c.reset}`;
 
 const HELP = `
 ${LINE}
- ${c.bold}${c.cyan}NexGsd${c.reset} ${c.dim}v${VERSION}${c.reset}
+ ${c.bold}${c.cyan}NexGSD${c.reset} ${c.dim}v${VERSION}${c.reset}
 ${LINE}
 
  ${c.bold}Usage:${c.reset}
-   ${c.cyan}nexgsd install${c.reset} [path]      Install NexGsd to a project
+   ${c.cyan}nexgsd install${c.reset} [path]      Install NexGSD to a project
    ${c.cyan}nexgsd update${c.reset} [path]    Update .agent/ to latest version
    ${c.cyan}nexgsd info${c.reset}             Show installed agent/workflow counts
    ${c.cyan}nexgsd --version${c.reset}        Show version
@@ -63,10 +63,10 @@ function createGitignore(targetDir) {
   if (fs.existsSync(gitignorePath)) {
     const content = fs.readFileSync(gitignorePath, 'utf-8');
     if (!content.includes(planningIgnore)) {
-      fs.appendFileSync(gitignorePath, `\n# NexGsd planning files (local only)\n${planningIgnore}\n`);
+      fs.appendFileSync(gitignorePath, `\n# NexGSD planning files (local only)\n${planningIgnore}\n`);
     }
   } else {
-    fs.writeFileSync(gitignorePath, `# NexGsd planning files (local only)\n${planningIgnore}\n`);
+    fs.writeFileSync(gitignorePath, `# NexGSD planning files (local only)\n${planningIgnore}\n`);
   }
 }
 
@@ -75,7 +75,7 @@ function copyAgent(targetDir) {
   const agentTarget = path.join(target, '.agent');
 
   if (!fs.existsSync(AGENT_SRC)) {
-    console.error(`${c.red}✗${c.reset} .agent/ not found in NexGsd package.`);
+    console.error(`${c.red}✗${c.reset} .agent/ not found in NexGSD package.`);
     process.exit(1);
   }
 
@@ -86,7 +86,7 @@ function copyAgent(targetDir) {
 
   console.log('');
   console.log(LINE);
-  console.log(` ${c.bold}${c.cyan}⚡ NexGsd${c.reset} ${c.dim}v${VERSION}${c.reset} ${c.dim}→${c.reset} ${c.white}${target}${c.reset}`);
+  console.log(` ${c.bold}${c.cyan}⚡ NexGSD${c.reset} ${c.dim}v${VERSION}${c.reset} ${c.dim}→${c.reset} ${c.white}${target}${c.reset}`);
   console.log(LINE);
   console.log('');
 
@@ -133,7 +133,7 @@ function copyAgent(targetDir) {
   console.log(`   ${c.magenta}/nexgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}`);
   console.log('');
   console.log(LINE);
-  console.log(` ${c.green}${c.bold}NexGsd installed successfully ✓${c.reset}`);
+  console.log(` ${c.green}${c.bold}NexGSD installed successfully ✓${c.reset}`);
   console.log(LINE);
 }
 
@@ -154,7 +154,7 @@ function showInfo(targetDir) {
     refCount = fs.readdirSync(path.join(agentTarget, 'references')).filter(f => f.endsWith('.md')).length;
   } catch {}
 
-  console.log(`${c.bold}${c.cyan}NexGsd${c.reset} ${c.dim}v${VERSION}${c.reset}`);
+  console.log(`${c.bold}${c.cyan}NexGSD${c.reset} ${c.dim}v${VERSION}${c.reset}`);
   console.log(`  ${c.green}●${c.reset} Agents:     ${c.bold}${agentCount}${c.reset}`);
   console.log(`  ${c.green}●${c.reset} Workflows:  ${c.bold}${workflowCount}${c.reset}`);
   console.log(`  ${c.green}●${c.reset} Templates:  ${c.bold}${templateCount}${c.reset}`);
@@ -185,7 +185,7 @@ if (!cmd || cmd === '--help' || cmd === '-h') {
 } else if (cmd === 'install' || cmd === 'install') {
   copyAgent(args[1]);
 } else if (cmd === 'update') {
-  console.log(`${c.cyan}Updating NexGsd...${c.reset}`);
+  console.log(`${c.cyan}Updating NexGSD...${c.reset}`);
   try {
     execSync('npm update -g nexgsd', { stdio: 'inherit' });
     copyAgent(args[1]);

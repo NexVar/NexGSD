@@ -1,8 +1,8 @@
 ---
-description: Validate NexGsd planning files and optionally repair safe issues
+description: Validate NexGSD planning files and optionally repair safe issues
 ---
 
-# NexGsd Health
+# NexGSD Health
 
 Validate `.planning/` integrity and report issues in plain language.
 

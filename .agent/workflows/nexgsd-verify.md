@@ -2,7 +2,7 @@
 description: Verify built features through user acceptance testing
 ---
 
-# NexGsd Verify — User Acceptance Testing
+# NexGSD Verify — User Acceptance Testing
 
 Validate built features through conversational testing. Show expected behavior, ask if reality matches. One test at a time, plain text responses.
 
@@ -36,7 +36,7 @@ VERIFICATION RULES:
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and check phase exists.
 
-**If no `.planning/`:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Run /nexgsd-new-project first."
 **If phase not found:** "Phase [N] not found."
 
 Check for SUMMARY.md files in the phase directory — these contain what was built and what to test.
@@ -156,7 +156,7 @@ git commit -m "test([NN]): UAT complete — [passed] passed, [issues] issues"
 **If all passed:**
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► UAT COMPLETE ✓
+ NexGSD ► UAT COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 All [N] tests passed!
@@ -172,7 +172,7 @@ Recommended: Start a NEW CONVERSATION for the next phase.
 **If issues found:**
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► UAT COMPLETE — [Issues] ISSUES FOUND
+ NexGSD ► UAT COMPLETE — [Issues] ISSUES FOUND
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Passed]/[Total] tests passed. [Issues] issues need attention:

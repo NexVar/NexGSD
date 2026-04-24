@@ -1,10 +1,10 @@
 ---
-description: Execute a small ad-hoc task with NexGsd guarantees (atomic commits, state tracking)
+description: Execute a small ad-hoc task with NexGSD guarantees (atomic commits, state tracking)
 ---
 
-# NexGsd Quick — Ad-Hoc Task with Guarantees
+# NexGSD Quick — Ad-Hoc Task with Guarantees
 
-Execute small, self-contained tasks with NexGsd's atomic commit and state tracking guarantees without full phase ceremony.
+Execute small, self-contained tasks with NexGSD's atomic commit and state tracking guarantees without full phase ceremony.
 
 > **🛡️ ANTI-HALLUCINATION PROTOCOL — ACTIVE IN THIS WORKFLOW**
 > Quick tasks skip research and deep planning — but they do NOT skip verification. Every change must be verified with actual commands. Do not assume "it works" — prove it.
@@ -37,7 +37,7 @@ QUICK TASK RULES:
 
 **Actually read** `.planning/ROADMAP.md` and `.planning/STATE.md` to understand current project state.
 
-**If no `.planning/`:** "No NexGsd project found. Quick mode needs an active project. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Quick mode needs an active project. Run /nexgsd-new-project first."
 
 ### 2. Create Quick Task Directory
 
@@ -162,7 +162,7 @@ git commit -m "docs(quick-[NNN]): [description]"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► QUICK TASK COMPLETE ✓
+ NexGSD ► QUICK TASK COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Quick Task [NNN]: [Description]

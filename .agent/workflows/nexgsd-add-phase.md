@@ -2,7 +2,7 @@
 description: Append a new roadmap phase to the current milestone
 ---
 
-# NexGsd Add Phase
+# NexGSD Add Phase
 
 Add a future phase cleanly.
 

@@ -2,7 +2,7 @@
 description: Turn milestone audit gaps into focused roadmap work
 ---
 
-# NexGsd Plan Milestone Gaps
+# NexGSD Plan Milestone Gaps
 
 Convert milestone gaps into actionable follow-up work.
 

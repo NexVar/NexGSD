@@ -1,14 +1,14 @@
 ---
-description: Show all available NexGsd commands and usage guide
+description: Show all available NexGSD commands and usage guide
 ---
 
-# NexGsd Help — Available Commands
+# NexGSD Help — Available Commands
 
 Display the following help information to the user:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd — Command Reference
+ NexGSD — Command Reference
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## ⚡ Core Commands
@@ -51,7 +51,7 @@ Display the following help information to the user:
 
 | Command              | What it does                                                |
 |----------------------|-------------------------------------------------------------|
-| /nexgsd-quick [desc]    | Execute small ad-hoc task with NexGsd quality guarantees       |
+| /nexgsd-quick [desc]    | Execute small ad-hoc task with NexGSD quality guarantees       |
 | /nexgsd-progress        | Pulse check: Current state, roadblocks, and next steps      |
 | /nexgsd-commit-memory   | Distill project state into durable memory                    |
 | /nexgsd-help            | Show this help message                                      |
@@ -76,7 +76,7 @@ Display the following help information to the user:
 | /nexgsd-add-todo           | Capture a follow-up item during active work                 |
 | /nexgsd-check-todos        | Review pending todos and route them into action             |
 | /nexgsd-health             | Validate `.planning/` integrity and repair safe issues      |
-| /nexgsd-update             | Update a NexGsd clone or explain reinstall flow            |
+| /nexgsd-update             | Update a NexGSD clone or explain reinstall flow            |
 | /nexgsd-settings           | Inspect or update project settings                          |
 | /nexgsd-set-profile        | Set the preferred model profile                             |
 | /nexgsd-research-phase     | Run standalone phase research                               |

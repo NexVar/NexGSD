@@ -2,7 +2,7 @@
 description: Run standalone phase research before planning
 ---
 
-# NexGsd Research Phase
+# NexGSD Research Phase
 
 Use this when the phase has unknown libraries, patterns, architecture, or domain risk.
 

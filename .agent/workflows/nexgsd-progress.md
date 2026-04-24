@@ -2,7 +2,7 @@
 description: Show current project status and next steps
 ---
 
-# NexGsd Progress — Where Am I?
+# NexGSD Progress — Where Am I?
 
 Show the user their current project status and what to do next.
 
@@ -33,7 +33,7 @@ Check if `.planning/` directory exists in the current project root.
 
 If not found:
 ```
-No NexGsd project found in this directory.
+No NexGSD project found in this directory.
 Run /nexgsd-new-project to initialize.
 ```
 Stop here.
@@ -72,7 +72,7 @@ Present a summary showing:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► PROJECT STATUS
+ NexGSD ► PROJECT STATUS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 

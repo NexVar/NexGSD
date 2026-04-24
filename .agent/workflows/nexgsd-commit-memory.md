@@ -2,7 +2,7 @@
 description: Distill current project state into long-term memory
 ---
 
-# NexGsd Commit Memory — Context Preservation 🧠
+# NexGSD Commit Memory — Context Preservation 🧠
 
 This workflow extracts architectural decisions, pivots, and "lessons learned" from the current project state and saves them to the permanent memory log.
 

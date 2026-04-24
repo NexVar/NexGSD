@@ -1,10 +1,10 @@
 ---
-description: Configure project-specific NexGsd settings (notifications, deploy platform, model preferences)
+description: Configure project-specific NexGSD settings (notifications, deploy platform, model preferences)
 ---
 
-# NexGsd Setup Config — Project Configuration
+# NexGSD Setup Config — Project Configuration
 
-Interactive configuration for project-specific NexGsd settings. Creates `.planning/nexgsd-config.json`.
+Interactive configuration for project-specific NexGSD settings. Creates `.planning/nexgsd-config.json`.
 
 ## When to Run
 
@@ -28,7 +28,7 @@ Ask the user these questions (skip if already configured):
 **Notifications:**
 - "Push bildirim almak ister misin? (ntfy.sh kullanılır)" → yes/no
 - If yes: "ntfy kanal adı ne olsun? (örn: mertpi-alerts)" → topic name
-- Test notification: `curl -s -d "NexGsd bildirim testi basarili!" ntfy.sh/${topic}`
+- Test notification: `curl -s -d "NexGSD bildirim testi basarili!" ntfy.sh/${topic}`
 
 **Deploy Platform:**
 - "Deploy platformu hangisi?" → cloudflare-pages / vercel / netlify / none
@@ -93,7 +93,7 @@ Write `.planning/nexgsd-config.json`:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd Config ✓
+ NexGSD Config ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  Notifications: {enabled/disabled} → {topic}

@@ -2,7 +2,7 @@
 description: Safe refactoring workflow with snapshot tests, atomic commits, and rollback strategy
 ---
 
-# NexGsd Refactor — Safe Refactoring with Rollback
+# NexGSD Refactor — Safe Refactoring with Rollback
 
 Execute refactoring operations safely. Takes a snapshot of current behavior via tests, performs the refactor in atomic commits, and verifies behavior is preserved. Automatically rolls back if tests fail.
 
@@ -41,7 +41,7 @@ when it isn't. Tests are the ONLY proof of preservation.
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/`:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Run /nexgsd-new-project first."
 
 Ensure working tree is clean:
 ```bash
@@ -106,7 +106,7 @@ npm run build 2>&1
 Display:
 ```
 +--------------------------------------------------+
-| NexGsd > REFACTOR -- PRE-CHECK COMPLETE             |
+| NexGSD > REFACTOR -- PRE-CHECK COMPLETE             |
 +--------------------------------------------------+
 
 Refactor: [description]
@@ -199,7 +199,7 @@ git reset --hard $ROLLBACK_HASH
 Display:
 ```
 +--------------------------------------------------+
-| NexGsd > REFACTOR ROLLED BACK                       |
+| NexGSD > REFACTOR ROLLED BACK                       |
 +--------------------------------------------------+
 
 Step that failed: [step description]
@@ -309,7 +309,7 @@ git commit -m "docs: refactor complete — [description]"
 
 ```
 +--------------------------------------------------+
-| NexGsd > REFACTOR COMPLETE                          |
+| NexGSD > REFACTOR COMPLETE                          |
 +--------------------------------------------------+
 
 Refactor:    [description]

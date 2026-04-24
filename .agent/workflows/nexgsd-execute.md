@@ -2,7 +2,7 @@
 description: Execute all plans for a phase with atomic git commits
 ---
 
-# NexGsd Execute — Run Plans with Atomic Commits
+# NexGSD Execute — Run Plans with Atomic Commits
 
 Execute all plans in a phase. Each task gets its own atomic git commit. The orchestrator reads plans, executes tasks in order, commits each one, and creates a summary.
 
@@ -36,7 +36,7 @@ CONTEXT FRESHNESS CHECK:
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/` directory:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/` directory:** "No NexGSD project found. Run /nexgsd-new-project first."
 **If phase not found:** "Phase [N] not found."
 
 Find all PLAN.md files for this phase:
@@ -79,7 +79,7 @@ For each wave, in order:
 Display:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► EXECUTING PHASE [N] — WAVE [W]
+ NexGSD ► EXECUTING PHASE [N] — WAVE [W]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Plan [N]-[P]: [Plan Name]
@@ -239,7 +239,7 @@ elif [ "$(git branch --show-current)" != "dev" ]; then
 fi
 
 git add -A
-git commit --allow-empty -m "NexGsd: phase complete - $(date +%H:%M)"
+git commit --allow-empty -m "NexGSD: phase complete - $(date +%H:%M)"
 git push -u origin dev
 ```
 
@@ -249,7 +249,7 @@ Send push notification if ntfy is configured:
 ```bash
 NTFY_TOPIC=$(cat .planning/nexgsd-config.json 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('ntfy_topic',''))" 2>/dev/null)
 if [ -n "$NTFY_TOPIC" ]; then
-  curl -s -H "Title: NexGsd Phase Complete" -d "Phase [N]: [Name] tamamlandi. [M] plan, [K] commit." ntfy.sh/$NTFY_TOPIC
+  curl -s -H "Title: NexGSD Phase Complete" -d "Phase [N]: [Name] tamamlandi. [M] plan, [K] commit." ntfy.sh/$NTFY_TOPIC
 fi
 ```
 
@@ -257,7 +257,7 @@ fi
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd ► PHASE [N] COMPLETE ✓
+ NexGSD ► PHASE [N] COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Phase [N]: [Name]

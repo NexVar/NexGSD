@@ -1,8 +1,8 @@
 ---
-description: Show what NexGsd would likely plan for a phase before plan creation
+description: Show what NexGSD would likely plan for a phase before plan creation
 ---
 
-# NexGsd List Phase Assumptions
+# NexGSD List Phase Assumptions
 
 Preview planning assumptions before writing plans.
 

@@ -2,7 +2,7 @@
 description: Deploy project to CF Pages, Vercel, or Netlify with post-deploy verification
 ---
 
-# NexGsd Deploy — Build, Ship, Verify
+# NexGSD Deploy — Build, Ship, Verify
 
 Deploy the current project to a hosting platform. Auto-detects the platform from project config, builds, deploys, verifies the live URL, and updates STATE.md.
 
@@ -37,7 +37,7 @@ when it didn't. A false positive here means broken production.
 
 **Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
-**If no `.planning/`:** "No NexGsd project found. Run /nexgsd-new-project first."
+**If no `.planning/`:** "No NexGSD project found. Run /nexgsd-new-project first."
 
 Check git status -- ensure working tree is clean:
 ```bash
@@ -68,7 +68,7 @@ ls wrangler.toml wrangler.jsonc vercel.json netlify.toml 2>/dev/null
 Display:
 ```
 +--------------------------------------------------+
-| NexGsd > DEPLOYING TO [PLATFORM]                    |
+| NexGSD > DEPLOYING TO [PLATFORM]                    |
 +--------------------------------------------------+
 
 Project: [project name from ROADMAP.md]
@@ -206,7 +206,7 @@ git commit -m "deploy: [platform] — [success/failed] ([short-hash])"
 **If deploy succeeded:**
 ```
 +--------------------------------------------------+
-| NexGsd > DEPLOY COMPLETE                            |
+| NexGSD > DEPLOY COMPLETE                            |
 +--------------------------------------------------+
 
 Platform: [Platform]
@@ -226,7 +226,7 @@ Recommended: Verify the live site manually.
 **If deploy failed:**
 ```
 +--------------------------------------------------+
-| NexGsd > DEPLOY FAILED                              |
+| NexGSD > DEPLOY FAILED                              |
 +--------------------------------------------------+
 
 Platform: [Platform]

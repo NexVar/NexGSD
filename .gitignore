@@ -1,9 +1,9 @@
-# --- NexGsd Ignored Files ---
+# --- NexGSD Ignored Files ---
 .nexgsd/
 .gemini/
 .planning/
 PROJECT_RULES.md
-NexGsd-STYLE.md
+NexGSD-STYLE.md
 model_capabilities.yaml
 # -----------------------------------
 

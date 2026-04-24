@@ -4,7 +4,7 @@ description: Strict Anti-Hallucination Q&A Mode — verify every claim before an
 
 # /nexgsd-no-halluc — Anti-Hallucination Q&A Mode
 
-Activate NexGsd's strict verification engine for general technical questions and discussions. This mode forces the AI to provide evidence for every claim, cite sources, and admit uncertainty instead of guessing.
+Activate NexGSD's strict verification engine for general technical questions and discussions. This mode forces the AI to provide evidence for every claim, cite sources, and admit uncertainty instead of guessing.
 
 > **🛡️ ANTI-HALLUCINATION ACTIVE**
 > Every answer in this mode must be: Verified, Cited, and Scored.

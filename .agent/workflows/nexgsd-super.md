@@ -2,9 +2,9 @@
 description: Fully autonomous AI execution — from prompt to production with zero human input
 ---
 
-# NexGsd Super — Full Autonomous Execution Mode
+# NexGSD Super — Full Autonomous Execution Mode
 
-The AI takes over. Give it a prompt or PRD, answer a few setup questions, then walk away. It builds from MVP to production-ready by running all NexGsd phases autonomously — planning, executing, testing, debugging, and deploying.
+The AI takes over. Give it a prompt or PRD, answer a few setup questions, then walk away. It builds from MVP to production-ready by running all NexGSD phases autonomously — planning, executing, testing, debugging, and deploying.
 
 > **⚡ THIS IS FULL AUTONOMY MODE**
 > After the initial interview, the AI runs ALL phases on its own:
@@ -285,7 +285,7 @@ Do you have API keys ready, or should I:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd SUPER ► CONFIGURATION LOCKED
+ NexGSD SUPER ► CONFIGURATION LOCKED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Project:      [name from PRD/prompt]
@@ -522,7 +522,7 @@ FOR each phase in ROADMAP:
   │  5. Generate PROGRESS REPORT (see 4.6)                      │
   │  6. Auto-sync phase commit to dev (no prompt):              │
   │     git add -A                                              │
-  │     git commit --allow-empty -m "NexGsd: phase complete -      │
+  │     git commit --allow-empty -m "NexGSD: phase complete -      │
   │       $(date +%H:%M)"                                       │
   │     git push -u origin dev                                  │
   │                                                             │
@@ -886,7 +886,7 @@ PROGRESS TRACKER:
 Save to .planning/SUPER-PROGRESS.md and update after each task:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd SUPER ► PROGRESS REPORT
+ NexGSD SUPER ► PROGRESS REPORT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Overall: ██████░░░░ 60% (Phase 3/5)
@@ -1145,7 +1145,7 @@ DEPLOYMENT PROTOCOL:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- NexGsd SUPER ► COMPLETE ✅
+ NexGSD SUPER ► COMPLETE ✅
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## What I Built
@@ -1236,13 +1236,13 @@ If the user provided an ntfy channel during the interview (Q_ntfy), or if ntfy i
 # Use the channel from the interview, or fall back to config
 NTFY_TOPIC="${INTERVIEW_NTFY_CHANNEL:-$(cat .planning/nexgsd-config.json 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('ntfy_topic',''))" 2>/dev/null)}"
 if [ -n "$NTFY_TOPIC" ]; then
-  curl -s -H "Title: NexGsd Super Complete" -d "Proje tamamlandi! Tum fazlar, audit ve deploy bitti." ntfy.sh/$NTFY_TOPIC
+  curl -s -H "Title: NexGSD Super Complete" -d "Proje tamamlandi! Tum fazlar, audit ve deploy bitti." ntfy.sh/$NTFY_TOPIC
 fi
 ```
 
 Throughout execution, if ntfy channel was provided:
-- Her faz tamamlandiginda: `curl -s -H "Title: NexGsd Super" -d "Faz [N] tamamlandi." ntfy.sh/[KANAL]`
-- Hata durumunda: `curl -s -H "Title: NexGsd HATA" -H "Priority: high" -d "[hata]" ntfy.sh/[KANAL]`
+- Her faz tamamlandiginda: `curl -s -H "Title: NexGSD Super" -d "Faz [N] tamamlandi." ntfy.sh/[KANAL]`
+- Hata durumunda: `curl -s -H "Title: NexGSD HATA" -H "Priority: high" -d "[hata]" ntfy.sh/[KANAL]`
 - Kullanici kanal vermemisse bildirim gonderme.
 
 ---
@@ -1274,7 +1274,7 @@ SUPER MODE SAFETY — THESE RULES CANNOT BE OVERRIDDEN:
 
 ```
 SUPER MODE runs long — model switches WILL happen.
-This is the MOST CRITICAL section for NexGsd.
+This is the MOST CRITICAL section for NexGSD.
 
 1. Plans must be model-proof:
    - Step-by-step instructions (not "implement X")

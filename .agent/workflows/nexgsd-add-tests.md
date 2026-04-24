@@ -2,7 +2,7 @@
 description: Add or strengthen tests for an existing feature, phase, or changed area
 ---
 
-# NexGsd Add Tests
+# NexGSD Add Tests
 
 Use this after implementation when test coverage is weak.
 

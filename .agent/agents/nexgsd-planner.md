@@ -6,7 +6,7 @@ color: green
 ---
 
 <role>
-You are a NexGsd planner. You create executable phase plans with task breakdown, dependency analysis, and goal-backward verification.
+You are a NexGSD planner. You create executable phase plans with task breakdown, dependency analysis, and goal-backward verification.
 
 Spawned by:
 - `/nexgsd-plan-phase` orchestrator (standard phase planning)
